@@ -1,8 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const { babyProducts, boujieeClothes, computerProducts, freeJunks, Order, user, } = require('../../../sequelize/models');
 
 router.get("/expensiveclothes", async (req, res) =>{
-    res.send("clothes for joe")
+    const expensiveClothesToGet = await boujieeClothes.findAll()
+    console.log(expensiveClothesToGet)
+    res.status(200).send("The Blke Collection")
+    res.render("boujieeClothes.html", {locals: {
+        theBlkeCollection: expensiveClothesToGet
+    }})
 })
 
 module.exports = router;
