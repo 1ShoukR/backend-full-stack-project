@@ -2,6 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const session = require("express-session")
 const cookieParser = require("cookie-parser")
+const models = require("../sequelize/models")
+const SequelizeStore = require("connect-session-sequelize")(session.Store)
+const store = new SequelizeStore({
+    db:models.sequelize 
+})
 const app = express();
 const es6Renderer = require('express-es6-template-engine');
 const PORT = 3005;
@@ -21,12 +26,10 @@ app.use(
         secret: "secret",
         resave: false,
         saveUninitialized: true,
-        cookie: {
-            secure: false,
-            maxAge: 3600000
-        }
+        store: store
     })
 )
+store.sync()
 app.use(express.static('public'));
 app.engine('html', es6Renderer);
 app.set('views', './public/views');
