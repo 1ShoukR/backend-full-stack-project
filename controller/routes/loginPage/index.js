@@ -20,11 +20,14 @@ const checkLogin = (req, res, next) => { // add this function to every routes pa
 
 
 
+
+
 //logout
 router.get("/logout", (req, res) =>{
     console.log(req.session);
-    req.session.user = null
-    res.render("createUser.html")
+    req.session = null
+    console.log(req.session)
+    res.render("loginPage.html")
 })
 
 
@@ -64,7 +67,7 @@ router.post("/user_login", async (req, res) =>{
 router.post("/create_user", async (req, res) => { //after creating an account, redirect them to homepage;
     const {username, firstName, lastName, email, password } = req.body
     console.log({ username, firstName, lastName, email, password });
-    // check first if the above values are bull, send alert
+    // check first if the above values are null, send alert
     try {
         if (!username) {
             return res.status(400).send("please enter a username")
@@ -86,29 +89,28 @@ router.post("/create_user", async (req, res) => { //after creating an account, r
         }
         if(emailValidator.validate(email)) {
             console.log("email is valid")
-            
+            const salt = await bcrypt.genSalt(5)
+            console.log(salt)
+            const hashedPassword = await bcrypt.hash(password, salt)
+            console.log(hashedPassword)
+            const encryptedUser = {
+                username: username,
+                password: hashedPassword,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            }
+            console.log(user)
+            const createUser = await user.create(encryptedUser)
+            console.log(createUser)
+            res.status(200)
+            res.redirect('/basic_homepage');
         } else {
             console.log("email is not valid")
             res.render('createUser.html');
         }
-        const salt = await bcrypt.genSalt(5)
-        console.log(salt)
-        const hashedPassword = await bcrypt.hash(password, salt)
-        console.log(hashedPassword)
-        const encryptedUser = {
-            username: username,
-            password: hashedPassword,
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            createdAt: new Date(),
-            updatedAt: new Date(),
-        }
-        console.log(user)
-        const createUser = await user.create(encryptedUser)
-        console.log(createUser)
-        res.status(200)
-        res.redirect('/basic_homepage');
     } catch (error) {
         res.render('createUser.html');
         // res.status(400).redirect('/create_user');
@@ -138,6 +140,50 @@ router.post("/guestlogin",  async (req, res)  => { //after clicking "log in as a
         })
     }
 })
+
+// update password
+router.put ('/update_password', async (req, res) => {
+    const { username, password } = req.body
+    try {
+        const findUser = await user.findOne({
+            where: {
+                username: username,
+            }
+        })
+        try {
+            const salt = await bcrypt.genSalt(5)
+            const hashedPassword = await bcrypt.hash(password, salt)
+            findUser.password = hashedPassword
+            findUser.update({
+                username: username,
+                password: hashedPassword,
+                updatedAt: new Date()
+            })
+            res.send("Updated password")
+        } catch (error) {
+            console.log(error)
+            res.status(400).send(error)
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+    }
+})
+
+// delete account
+router.delete('/delete_user/:id', async (req, res) => {
+    const deleteUser = await user.findOne({
+        where:{
+            id: req.params.id
+        }
+    })
+    if (deleteUser){
+        await deleteUser.destroy()
+        res.send("User has been deleted")
+    } else {
+        res.send("this user does not exist")
+    }
+});
 
 //test route
 router.post("/delete_all_secrets",  checkLogin, async (req,res) =>{
