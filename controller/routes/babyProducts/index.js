@@ -6,7 +6,9 @@ const { babyProducts, boujieeClothes, computerProducts, freeJunks, Order, user, 
 router.get("/all_your_baby_needs", async (req, res) =>{
     const babyStuffToGet = await babyProducts.findAll()
     console.log(babyStuffToGet)
-    res.render("babyProducts.html")
+    res.render("babyProducts.html" ,{Locals: {
+        babyNeeds: babyProducts
+    }})
 })
 
 module.exports = router;

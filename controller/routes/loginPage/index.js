@@ -19,9 +19,25 @@ const checkLogin = (req, res, next) => { // add this function to every routes pa
   }
 };
 
+router.post("/user_login", async (req, res) =>{
+    const {username, password } = req.body
+    console.log(username, password)
+    const getUser = await user.findOne({
+        where: {
+            username: req.body.username,
+            password: req.body.password,
+        }
+    })
+    if (getUser) {
+        res.redirect("/basic_homepage")
+    }
+})
 
-router.post("/create_user", async (req, res) => { //after creating an account, redirect them to homepage
+
+router.post("/create_user", async (req, res) => { //after creating an account, redirect them to homepage;
+
     const {username, firstName, lastName, email, password } = req.body
+    // res.render('createUser.html');
     console.log({ username, firstName, lastName, email, password });
     try {
         const salt = await bcrypt.genSalt(5)
@@ -40,10 +56,11 @@ router.post("/create_user", async (req, res) => { //after creating an account, r
         console.log(user)
         const createUser = await user.create(encryptedUser)
         console.log(createUser)
-        res.status(200).send("Account succesfully created!")
-        res.redirect("/")
+        res.status(200)
+        res.redirect('/basic_homepage');
     } catch (error) {
-        res.status(400).send(error)
+        res.send("Invalid")
+        // res.status(400).redirect('/create_user');
     }
 })
 
@@ -60,7 +77,7 @@ router.post("/guestlogin",  async (req, res)  => { //after clicking "log in as a
     })
     if (guestUser){
         req.session.user = guestUser
-        console.log(req.session)
+        console.log(req.session.user)
         res.redirect('/basic_homepage/');
     } else {
         res.json({

@@ -6,7 +6,7 @@ router.get("/expensiveclothes", async (req, res) =>{
     const expensiveClothesToGet = await boujieeClothes.findAll()
     console.log(expensiveClothesToGet)
     if (expensiveClothesToGet) {
-        res.status(200).send("The Blke Collection")
+        res.status(200)
         res.render("boujieeClothes.html", {locals: {
             theBlkeCollection: expensiveClothesToGet
         }})
