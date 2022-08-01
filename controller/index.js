@@ -11,6 +11,7 @@ const basicHomepageRoutes = require("./routes/basicHomepage")
 const freeJunkRoutes = require("./routes/freeJunk")
 const loginPageRoutes = require("./routes/loginPage")
 const pcPartsRoutes = require("./routes/pcParts")
+const addOrder = require("./routes/addOrder")
 
 
 //middleware
@@ -38,6 +39,7 @@ app.use("/basic_homepage", basicHomepageRoutes)
 app.use("/free_junk", freeJunkRoutes)
 app.use("/login_page", loginPageRoutes)
 app.use("/pc_parts", pcPartsRoutes)
+app.use("/add_to_cart", addOrder)
 
 
 // route checker
