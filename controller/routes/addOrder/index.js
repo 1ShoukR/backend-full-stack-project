@@ -2,35 +2,43 @@ const express = require('express');
 const router = express.Router();
 const { Order } = require("../../../sequelize/models")
 
+const checkLogin = (req, res, next) => {
+  // add this function to every routes page and have it redirect them to the login page html file
+    if (req.session.user) {
+    next();
+    } else {
+    res.render('createUser.html');
+    } 
+};
 
 
 
 // adds order to the orders table
-router.post("/add_order", async (req, res) =>{
-    const { userId, babyProductsId, computerProductsId, boujieeClothesId, freeJunkId, orderSummary, carrierService, trackingNumber, deliveryDate} = req.body
-    console.log(
-    userId,
-    babyProductsId,
-    computerProductsId,
-    boujieeClothesId,
-    freeJunkId,
-    orderSummary,
-    carrierService,
-    trackingNumber,
-    deliveryDate
-    );
-    const newOrder = {
-        userId: userId,
-        babyProductsId: babyProductsId,
-        computerProductsId: computerProductsId,
-        boujieeClothesId: boujieeClothesId,
-        freeJunkId: freeJunkId,
-        orderSummary: orderSummary,
-        carrierService: carrierService,
-        trackingNumber: trackingNumber,
-        deliveryDate: deliveryDate
+router.post("/add_order", checkLogin, async (req, res) =>{
+    try {
+        const {userId,babyProductsId,computerProductsId,boujieeClothesId,freeJunkId,orderSummary,carrierService,trackingNumber,deliveryDate,
+        } = req.body;
+        console.log(userId,babyProductsId,computerProductsId,boujieeClothesId,freeJunkId,orderSummary,carrierService,trackingNumber,deliveryDate
+        );
+        const newOrder = {
+            userId: userId,
+            babyProductsId: babyProductsId,
+            computerProductsId: computerProductsId,
+            boujieeClothesId: boujieeClothesId,
+            freeJunkId: freeJunkId,
+            orderSummary: orderSummary,
+            carrierService: carrierService,
+            trackingNumber: trackingNumber,
+            deliveryDate: deliveryDate,
+        };
+    const addOrderToTable = await Order.create(newOrder);
+    console.log(addOrderToTable);
+    res.status(200);
+    } catch (error) {
+        res.status(400)
+        res.redirect('/basic_homepage');
     }
-    const addOrderToTable = await Order.create(newOrder)
+
 })
 
 
