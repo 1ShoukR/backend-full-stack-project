@@ -1,7 +1,7 @@
-
 const express = require("express")
 const router = express.Router()
 const bcrypt = require("bcrypt")
+const emailValidator = require("email-validator")
 const { babyProducts, boujieeClothes, computerProducts, freeJunk, Order, user } = require("../../../sequelize/models")
 
 
@@ -9,6 +9,7 @@ const { babyProducts, boujieeClothes, computerProducts, freeJunk, Order, user } 
 
 
 
+// check login function
 const checkLogin = (req, res, next) => { // add this function to every routes page and have it redirect them to the login page html file
     if (req.session.user) {
     next();
@@ -17,9 +18,24 @@ const checkLogin = (req, res, next) => { // add this function to every routes pa
 }
 };
 
+
+
+//logout
+router.get("/logout", (req, res) =>{
+    console.log(req.session);
+    req.session.user = null
+    res.render("createUser.html")
+})
+
+
+// user login
 router.post("/user_login", async (req, res) =>{
+    console.log(req.session);
     const {username, password } = req.body
     console.log(username, password)
+    if(!username || !password){
+        res.send(400).send("Please provide a username and password")
+    }
     try {
             const getUser = await user.findOne({
                 where: {
@@ -34,19 +50,47 @@ router.post("/user_login", async (req, res) =>{
             if (!validatePassword){
                 res.status(400).send("That user does not exist") // make them redirect to login page again 
             } else {
-                res.status(200).send("Succesful Login") // make them redirected to homepage
+             // make them redirected to homepage
+                req.session.user = userWeFound
+                console.log(req.session)
+                res.redirect('/basic_homepage')
             }
     } catch (error) {
         res.status(400).send(error)
     }
 })
 
-
+//create a user
 router.post("/create_user", async (req, res) => { //after creating an account, redirect them to homepage;
-
     const {username, firstName, lastName, email, password } = req.body
     console.log({ username, firstName, lastName, email, password });
+    // check first if the above values are bull, send alert
     try {
+        if (!username) {
+            return res.status(400).send("please enter a username")
+        }
+        if (!firstName){
+            return res.status(400).send("Please enter first name")
+        }
+        if (!lastName){
+            return res.status(400).send("Please enter a last name")
+        }
+        if (!email){
+            return res.status(400).send("Please enter an email address")
+        }
+        if (email.length>254){
+            return res.status(400).send('Please enter an email address');
+        }
+        if (!password){
+            return res.status(400).send("Please enter a password")
+        }
+        if(emailValidator.validate(email)) {
+            console.log("email is valid")
+            
+        } else {
+            console.log("email is not valid")
+            res.render('createUser.html');
+        }
         const salt = await bcrypt.genSalt(5)
         console.log(salt)
         const hashedPassword = await bcrypt.hash(password, salt)
@@ -71,6 +115,8 @@ router.post("/create_user", async (req, res) => { //after creating an account, r
     }
 })
 
+
+// guest login
 router.post("/guestlogin",  async (req, res)  => { //after clicking "log in as a guest user" link, redirect them to the homepage html file
     console.log(req.session)
     const guestUser = await user.findOne({
@@ -85,7 +131,7 @@ router.post("/guestlogin",  async (req, res)  => { //after clicking "log in as a
     if (guestUser){
         req.session.user = guestUser
         console.log(req.session.user)
-        res.redirect('/basic_homepage/');
+        res.redirect('/basic_homepage');
     } else {
         res.json({
             message: "Login Failed",
@@ -93,7 +139,7 @@ router.post("/guestlogin",  async (req, res)  => { //after clicking "log in as a
     }
 })
 
-
+//test route
 router.post("/delete_all_secrets",  checkLogin, async (req,res) =>{
     res.send("You are legit")
 })
