@@ -37,7 +37,6 @@ router.post("/user_login", async (req, res) =>{
 router.post("/create_user", async (req, res) => { //after creating an account, redirect them to homepage;
 
     const {username, firstName, lastName, email, password } = req.body
-    // res.render('createUser.html');
     console.log({ username, firstName, lastName, email, password });
     try {
         const salt = await bcrypt.genSalt(5)
@@ -59,7 +58,7 @@ router.post("/create_user", async (req, res) => { //after creating an account, r
         res.status(200)
         res.redirect('/basic_homepage');
     } catch (error) {
-        res.send("Invalid")
+        res.render('createUser.html');
         // res.status(400).redirect('/create_user');
     }
 })
