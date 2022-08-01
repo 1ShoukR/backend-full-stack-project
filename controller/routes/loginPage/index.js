@@ -10,26 +10,34 @@ const { babyProducts, boujieeClothes, computerProducts, freeJunk, Order, user } 
 
 
 const checkLogin = (req, res, next) => { // add this function to every routes page and have it redirect them to the login page html file
-  if (req.session.user) {
+    if (req.session.user) {
     next();
-  } else {
-    res.json({
-      message: 'login Required',
-    });
-  }
+    } else {
+        res.render('createUser.html');
+}
 };
 
 router.post("/user_login", async (req, res) =>{
     const {username, password } = req.body
     console.log(username, password)
-    const getUser = await user.findOne({
-        where: {
-            username: req.body.username,
-            password: req.body.password,
-        }
-    })
-    if (getUser) {
-        res.redirect("/basic_homepage")
+    try {
+            const getUser = await user.findOne({
+                where: {
+                username: req.body.username,
+                },
+            });
+            const userWeFound = getUser.dataValues
+            console.log(getUser)
+            const validatePassword = await bcrypt.compare(password, userWeFound.password)
+            console.log(userWeFound.password)
+            console.log(validatePassword)
+            if (!validatePassword){
+                res.status(400).send("That user does not exist") // make them redirect to login page again 
+            } else {
+                res.status(200).send("Succesful Login") // make them redirected to homepage
+            }
+    } catch (error) {
+        res.status(400).send(error)
     }
 })
 
