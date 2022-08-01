@@ -41,6 +41,7 @@ router.post("/create_user", async (req, res) => { //after creating an account, r
         const createUser = await user.create(encryptedUser)
         console.log(createUser)
         res.status(200).send("Account succesfully created!")
+        res.redirect("/")
     } catch (error) {
         res.status(400).send(error)
     }
@@ -60,10 +61,7 @@ router.post("/guestlogin",  async (req, res)  => { //after clicking "log in as a
     if (guestUser){
         req.session.user = guestUser
         console.log(req.session)
-        res.json({
-            message: "Login Success",
-            user: guestUser
-        })
+        res.redirect('/basic_homepage/');
     } else {
         res.json({
             message: "Login Failed",

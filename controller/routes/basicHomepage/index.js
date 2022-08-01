@@ -5,7 +5,7 @@ const {babyProducts,boujieeClothes,computerProducts,freeJunk,Order,user,} = requ
 
 
 router.get("/", async (req, res) =>{
-    res.send("Welcome to the homepage!")
+    res.render("index.html")
 })
 
 
