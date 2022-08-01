@@ -5,9 +5,32 @@ const { Order } = require("../../../sequelize/models")
 
 
 
-
+// adds order to the orders table
 router.post("/add_order", async (req, res) =>{
-    res.send("This is your order")
+    const { userId, babyProductsId, computerProductsId, boujieeClothesId, freeJunkId, orderSummary, carrierService, trackingNumber, deliveryDate} = req.body
+    console.log(
+    userId,
+    babyProductsId,
+    computerProductsId,
+    boujieeClothesId,
+    freeJunkId,
+    orderSummary,
+    carrierService,
+    trackingNumber,
+    deliveryDate
+    );
+    const newOrder = {
+        userId: userId,
+        babyProductsId: babyProductsId,
+        computerProductsId: computerProductsId,
+        boujieeClothesId: boujieeClothesId,
+        freeJunkId: freeJunkId,
+        orderSummary: orderSummary,
+        carrierService: carrierService,
+        trackingNumber: trackingNumber,
+        deliveryDate: deliveryDate
+    }
+    const addOrderToTable = await Order.create(newOrder)
 })
 
 
