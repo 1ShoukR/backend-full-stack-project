@@ -5,8 +5,8 @@ const {babyProducts,boujieeClothes,computerProducts,freeJunk,Order,user,} = requ
 
 // can render out the name of the user I.E: "Welcome *insert user from req.session.user"
 router.get("/", async (req, res) =>{
-    console.log(req.session.user)
-    res.render("index.html", {locals: {name: req.sessionStore.user}})
+    console.log(req.session.user);
+    res.render("index.html", {locals: {name: req.session.user}})
 })
 
 
