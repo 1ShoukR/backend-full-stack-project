@@ -144,6 +144,7 @@ router.post("/guestlogin",  async (req, res)  => { //after clicking "log in as a
 // update password
 router.put ('/update_password', async (req, res) => {
     const { username, password } = req.body
+    console.log(username, password)
     try {
         const findUser = await user.findOne({
             where: {
@@ -162,7 +163,7 @@ router.put ('/update_password', async (req, res) => {
             res.render("createUser.html")
         } catch (error) {
             console.log(error)
-            res.status(400)
+            res.status(400) // give an alert that says password did not get submitted
             res.render("createUser.html")
         }
     } catch (error) {
