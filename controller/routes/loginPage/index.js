@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const bcrypt = require("bcrypt")
 const emailValidator = require("email-validator")
-const { babyProducts, boujieeClothes, computerProducts, freeJunk, Order, user } = require("../../../sequelize/models")
+const {  user } = require("../../../sequelize/models")
 
 
 

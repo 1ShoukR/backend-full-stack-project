@@ -1,3 +1,4 @@
+// requirements for all packages and files needed for server
 const express = require('express');
 const cors = require('cors');
 const session = require("express-session")
@@ -36,6 +37,8 @@ app.set('views', './public/views');
 app.set('view engine', 'html');
 app.use(express.json());
 app.use(cors());
+
+//links for the webpages
 app.use("/boujieeclothes", boujieeClothesRoute)
 app.use("/baby_products", babyProductsRoutes)
 app.use("/basic_homepage", basicHomepageRoutes)

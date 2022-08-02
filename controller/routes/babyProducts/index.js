@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { babyProducts, boujieeClothes, computerProducts, freeJunks, Order, user, } = require('../../../sequelize/models');
+const { babyProducts } = require('../../../sequelize/models');
 
 // check login function
 const checkLogin = (req, res, next) => {

@@ -7,3 +7,11 @@
 
 
 ## add redirect routes
+
+
+
+
+
+
+## Mentions in the readme
+- npm i bcrypt connect-session-sequelize cookie-parser cors dotenv email-validator express express-es6-template-engine express-session pg sequelize sequelize-cli

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {freeJunks} = require('../../../sequelize/models');
+const { freeJunks } = require('../../../sequelize/models');
 const checkLogin = (req, res, next) => {
   // add this function to every routes page and have it redirect them to the login page html file
   if (req.session.user) {
