@@ -160,7 +160,7 @@ router.put ('/update_password', async (req, res) => {
                 password: hashedPassword,
                 updatedAt: new Date()
             })
-            res.render("createUser.html")
+            res.render("createUser.html") // give alert that password has been updated
         } catch (error) {
             console.log(error)
             res.status(400) // give an alert that says password did not get submitted
