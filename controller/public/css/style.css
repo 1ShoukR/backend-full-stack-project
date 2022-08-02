@@ -184,10 +184,11 @@
 }
 
 .menu-item:hover .menu-bullet-icon {
-  color: var(--foreground-primary);
+  color: var(--background-primary);
 }
 
 .menu-link {
+  color: var(--background-primary);
   cursor: pointer;
 }
 
