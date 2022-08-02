@@ -102,5 +102,19 @@ cartBtn.onclick = () => {
 
 userBar.onsubmit = async event => {
   event.preventDefault();
-  const response = await fetch();
+  const response = await fetch("/login_page/user_login", {
+    method: "POST",
+    cache: "no-cache",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
+    body: JSON.stringify({
+      username: userBarEmailInput.value,
+      password: userBarPasswordInput.value,
+    }),
+  });
+  console.log(response);
 };
