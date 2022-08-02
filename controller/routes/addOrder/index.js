@@ -14,7 +14,7 @@ const checkLogin = (req, res, next) => {
 
 
 // adds order to the orders table
-router.post("/add_order", checkLogin, async (req, res) =>{
+router.post("/add_order", checkLogin, async (req, res) =>{ // make an alert on frontend that says "your order has been complete"
     try {
         const {userId,babyProductId,computerProductId,boujieeClothesId,freeJunkId,orderSummary,carrierService,trackingNumber,deliveryDate,} = req.body;
         console.log(userId,babyProductId,computerProductId,boujieeClothesId,freeJunkId,orderSummary,carrierService,trackingNumber,deliveryDate
@@ -38,7 +38,7 @@ router.post("/add_order", checkLogin, async (req, res) =>{
     res.status(200)
     res.redirect("/basic_homepage");
     } catch (error) {
-        res.send(error);
+        res.send(error); // "your order didnt go through"
     }
 
 })
