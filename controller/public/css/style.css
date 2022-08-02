@@ -333,3 +333,13 @@
   background-color: transparent;
   color: var(--foreground-primary);
 }
+
+#baby {
+  z-index: 100;
+  position: fixed;
+  inset: 0;
+  top: 20rem;
+  width: 10rem;
+  height: 5rem;
+  background-color: var(--background-accent);
+}

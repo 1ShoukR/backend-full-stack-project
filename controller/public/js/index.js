@@ -102,8 +102,9 @@ cartBtn.onclick = () => {
 
 userBar.onsubmit = async event => {
   event.preventDefault();
-  const response = await fetch("/login_page/user_login", {
+  const response = await fetch("http://127.0.0.1:3005/login_page/user_login", {
     method: "POST",
+    cors: "cors",
     cache: "no-cache",
     credentials: "same-origin",
     headers: {
@@ -116,5 +117,6 @@ userBar.onsubmit = async event => {
       password: userBarPasswordInput.value,
     }),
   });
-  console.log(response);
+  const json = await response.json();
+  console.log(json);
 };
