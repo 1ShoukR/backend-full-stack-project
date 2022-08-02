@@ -16,27 +16,29 @@ const checkLogin = (req, res, next) => {
 // adds order to the orders table
 router.post("/add_order", checkLogin, async (req, res) =>{
     try {
-        const {userId,babyProductsId,computerProductsId,boujieeClothesId,freeJunkId,orderSummary,carrierService,trackingNumber,deliveryDate,
-        } = req.body;
-        console.log(userId,babyProductsId,computerProductsId,boujieeClothesId,freeJunkId,orderSummary,carrierService,trackingNumber,deliveryDate
+        const {userId,babyProductId,computerProductId,boujieeClothesId,freeJunkId,orderSummary,carrierService,trackingNumber,deliveryDate,} = req.body;
+        console.log(userId,babyProductId,computerProductId,boujieeClothesId,freeJunkId,orderSummary,carrierService,trackingNumber,deliveryDate
         );
         const newOrder = {
             userId: userId,
-            babyProductsId: babyProductsId,
-            computerProductsId: computerProductsId,
+            babyProductId: babyProductId,
+            computerProductId: computerProductId,
             boujieeClothesId: boujieeClothesId,
             freeJunkId: freeJunkId,
             orderSummary: orderSummary,
             carrierService: carrierService,
             trackingNumber: trackingNumber,
             deliveryDate: deliveryDate,
+            createdAt: new Date(),
+            updatedAt: new Date(),
         };
+        console.log(newOrder)
     const addOrderToTable = await Order.create(newOrder);
     console.log(addOrderToTable);
-    res.status(200);
+    res.status(200)
+    res.redirect("/basic_homepage");
     } catch (error) {
-        res.status(400)
-        res.redirect('/basic_homepage');
+        res.send(error);
     }
 
 })
