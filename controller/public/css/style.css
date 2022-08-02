@@ -1,0 +1,334 @@
+*:not(head) {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--foreground-primary);
+  text-decoration: none;
+  letter-spacing: 0.125rem;
+  cursor: default;
+}
+
+:root {
+  --foreground-primary: #242124;
+  --foreground-accent: #ff355e;
+  --foreground-accent--hover: #ff1c4f;
+  --background-primary: #f5f5f5;
+  --background-accent: #949194;
+}
+
+[data-state="collapsed"] {
+  transition: all 175ms ease-out;
+  -webkit-transition: all 175ms ease-out;
+  -moz-transition: all 175ms ease-out;
+  -o-transition: all 175ms ease-out;
+  transition: all 175ms ease-out;
+}
+
+[data-state="expanded"] {
+  transition: all 175ms ease-in;
+  -webkit-transition: all 175ms ease-in;
+  -moz-transition: all 175ms ease-in;
+  -o-transition: all 175ms ease-in;
+  transition: all 175ms ease-in;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+  background-color: var(--background-primary);
+  overflow-y: auto;
+}
+
+#banner {
+  z-index: 3;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  background-color: var(--background-primary);
+}
+
+#promo {
+  display: inline;
+  font-weight: 100;
+  font-size: 0.75rem;
+}
+
+#promo-span {
+  display: inline;
+  font-size: inherit;
+  font-weight: 900;
+  color: var(--foreground-accent);
+}
+
+#navbar {
+  z-index: 3;
+  position: absolute;
+  inset: 0;
+  top: 2rem;
+  background-color: var(--background-primary);
+  border-block: thin solid var(--background-accent);
+}
+
+#navbar[data-state="collapsed"] {
+  height: 5rem;
+}
+
+#navbar[data-state="expanded--search-bar"] {
+  height: 8rem;
+}
+
+#navbar[data-state="expanded--user-bar"] {
+  height: 13rem;
+}
+
+#toolbar {
+  z-index: inherit;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 5rem;
+  background-color: var(--background-primary);
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-group:nth-child(1) {
+  justify-content: flex-start;
+}
+
+.toolbar-group:nth-child(2) {
+  justify-content: center;
+}
+
+.toolbar-group:nth-child(3) {
+  justify-content: flex-end;
+}
+
+.toolbar-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+}
+
+.toolbar-btn-svg {
+  height: 1.25rem;
+  cursor: inherit;
+}
+
+#brand-link {
+  cursor: pointer;
+}
+
+#brand-svg {
+  height: 2rem;
+  cursor: inherit;
+}
+
+#menu {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  top: 7rem;
+  width: 50%;
+  background-color: var(--foreground-accent);
+}
+
+#menu[data-state="collapsed"] {
+  transform: translateX(-100%);
+}
+
+#menu[data-state="expanded"] {
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  padding-block: 1rem;
+}
+
+.menu-bullet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  cursor: inherit;
+}
+
+.menu-bullet-icon {
+  font-weight: 900;
+  color: transparent;
+  cursor: inherit;
+}
+
+.menu-item:hover .menu-bullet-icon {
+  color: var(--foreground-primary);
+}
+
+.menu-link {
+  cursor: pointer;
+}
+
+#menu-login-btn {
+  grid-column: 2 / 3;
+  padding-block: 1rem;
+  background-color: var(--foreground-primary);
+  border: thin solid var(--foreground-primary);
+  border-radius: 0.125rem;
+  color: var(--background-primary);
+  cursor: pointer;
+}
+
+#menu-login-btn:hover {
+  background-color: transparent;
+  color: var(--foreground-primary);
+}
+
+#menu-create-account-btn {
+  grid-column: 2 / 3;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+#search-bar {
+  position: absolute;
+  inset: 0;
+  top: 5rem;
+  padding-inline: 1.75rem;
+}
+
+#search-bar[data-state="collapsed"] {
+  opacity: 0;
+}
+
+#search-bar[data-state="expanded"] {
+}
+
+#search-bar-input {
+  width: 100%;
+  height: 2rem;
+  border: thin solid var(--background-accent);
+  border-radius: 0.125rem;
+  padding-inline: 0.5rem;
+}
+
+#search-bar-submit {
+  flex-shrink: 0;
+  padding-inline: 3rem;
+  background-color: var(--foreground-accent);
+  border-radius: 0.125rem;
+  color: var(--background-primary);
+}
+
+#user-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  position: absolute;
+  inset: 0;
+  top: 5rem;
+  padding-inline: 1.75rem;
+}
+
+#user-bar[data-state="collapsed"] {
+  opacity: 0;
+}
+
+#user-bar[data-state="expanded"] {
+}
+
+#user-bar-email-input {
+  grid-column: 1 / 3;
+  border: thin solid var(--background-accent);
+  border-radius: 0.125rem;
+  padding-inline: 0.5rem;
+}
+
+#user-bar-password-input {
+  grid-column: 3 / 5;
+  border: thin solid var(--background-accent);
+  border-radius: 0.125rem;
+  padding-inline: 0.5rem;
+}
+
+#user-bar-submit-btn {
+  grid-column: 2 / 4;
+  padding-inline: 3rem;
+  background-color: var(--foreground-accent);
+  border-radius: 0.125rem;
+  color: var(--background-primary);
+  cursor: pointer;
+}
+
+#user-bar-create-account {
+  grid-column: 2 / 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 3rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+#cart {
+  z-index: 2;
+  position: fixed;
+  inset: 0;
+  top: 7rem;
+  left: unset;
+  width: 50%;
+  background-color: var(--background-primary);
+  border-inline: thin solid var(--background-accent);
+}
+
+#cart[data-state="collapsed"] {
+  transform: translateX(100%);
+}
+
+#cart[data-state="expanded"] {
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  padding-block: 1rem;
+}
+
+#cart-buy-now-btn {
+  grid-column: 2 / 3;
+  padding-block: 1rem;
+  background-color: var(--foreground-primary);
+  border: thin solid var(--foreground-primary);
+  border-radius: 0.125rem;
+  color: var(--background-primary);
+  cursor: pointer;
+}
+
+#cart-buy-now-btn:hover {
+  background-color: transparent;
+  color: var(--foreground-primary);
+}
