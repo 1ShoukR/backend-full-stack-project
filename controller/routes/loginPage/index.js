@@ -25,8 +25,8 @@ const checkLogin = (req, res, next) => { // add this function to every routes pa
 //logout
 router.get("/logout", (req, res) =>{
     console.log(req.session);
-    req.session = null
-    console.log(req.session)
+    req.session.user = null
+    console.log(req.session.user)
     res.render("loginPage.html")
 })
 
