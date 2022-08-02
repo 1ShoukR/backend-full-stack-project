@@ -159,10 +159,11 @@ router.put ('/update_password', async (req, res) => {
                 password: hashedPassword,
                 updatedAt: new Date()
             })
-            res.send("Updated password")
+            res.render("createUser.html")
         } catch (error) {
             console.log(error)
-            res.status(400).send(error)
+            res.status(400)
+            res.render("createUser.html")
         }
     } catch (error) {
         console.log(error)
@@ -179,9 +180,9 @@ router.delete('/delete_user/:id', async (req, res) => {
     })
     if (deleteUser){
         await deleteUser.destroy()
-        res.send("User has been deleted")
+        res.send("User has been deleted") //put an alert on the front end when the user has been deleted
     } else {
-        res.send("this user does not exist")
+        res.send("this user does not exist") // put an alert on the front end when the user cannot be found
     }
 });
 
