@@ -9,114 +9,17 @@ const userBar = document.getElementById("user-bar");
 const userBarEmailInput = document.getElementById("user-bar-email-input");
 const userBarPasswordInput = document.getElementById("user-bar-password-input");
 const userBarSubmitBtn = document.getElementById("user-bar-submit-btn");
+const userBarGuestAccount = document.getElementById("user-bar-guest-account");
+const userBarCreateAccount = document.getElementById("user-bar-create-account");
+const userBarLogOutBtn = document.getElementById("user-bar-log-out-btn");
+const userBarUpdatePasswordBtn = document.getElementById("user-bar-update-password-btn");
+const userBarDeleteAccountBtn = document.getElementById("user-bar-delete-account-btn");
 const cartBtn = document.getElementById("cart-btn");
 const cart = document.getElementById("cart");
-
-const getState = element => {
-  return element.dataset.state;
-};
-
-const setState = (element, state) => {
-  element.dataset.state = state;
-};
-
-menuBtn.onclick = () => {
-  setState(navbar, "collapsed");
-  setState(searchBtn, "collapsed");
-  setState(userBtn, "collapsed");
-  setState(cartBtn, "collapsed");
-  setState(cart, "collapsed");
-  switch (getState(menuBtn)) {
-    case "collapsed":
-      setState(menuBtn, "expanded");
-      setState(menu, "expanded");
-      break;
-    default:
-      setState(menuBtn, "collapsed");
-      setState(menu, "collapsed");
-  }
-};
-
-searchBtn.onclick = () => {
-  setState(userBtn, "collapsed");
-  setState(userBar, "collapsed");
-  setState(menuBtn, "collapsed");
-  setState(menu, "collapsed");
-  setState(cartBtn, "collapsed");
-  setState(cart, "collapsed");
-  switch (getState(searchBtn)) {
-    case "collapsed":
-      setState(navbar, "expanded--search-bar");
-      setState(searchBtn, "expanded");
-      setState(searchBar, "expanded");
-      searchBarInput.focus();
-      break;
-    default:
-      setState(navbar, "collapsed");
-      setState(searchBtn, "collapsed");
-      setState(searchBar, "collapsed");
-      searchBarInput.blur();
-  }
-};
-
-userBtn.onclick = () => {
-  setState(searchBtn, "collapsed");
-  setState(searchBar, "collapsed");
-  setState(menuBtn, "collapsed");
-  setState(menu, "collapsed");
-  setState(cartBtn, "collapsed");
-  setState(cart, "collapsed");
-  switch (getState(userBtn)) {
-    case "collapsed":
-      setState(navbar, "expanded--user-bar");
-      setState(userBtn, "expanded");
-      setState(userBar, "expanded");
-      userBarEmailInput.focus();
-      break;
-    default:
-      setState(navbar, "collapsed");
-      setState(userBtn, "collapsed");
-      setState(userBar, "collapsed");
-      userBarEmailInput.blur();
-  }
-};
-
-cartBtn.onclick = () => {
-  setState(navbar, "collapsed");
-  setState(searchBtn, "collapsed");
-  setState(userBtn, "collapsed");
-  setState(menuBtn, "collapsed");
-  setState(menu, "collapsed");
-  setState(cartBtn, "collapsed");
-  setState(cart, "collapsed");
-  switch (getState(cartBtn)) {
-    case "collapsed":
-      setState(cart, "expanded");
-      setState(cartBtn, "expanded");
-      break;
-    default:
-      setState(cart, "collapsed");
-      setState(cartBtn, "collapsed");
-  }
-};
-
-userBar.onsubmit = async event => {
-  event.preventDefault();
-  const response = await fetch("http://127.0.0.1:3005/login_page/user_login", {
-    method: "POST",
-    cors: "cors",
-    cache: "no-cache",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    redirect: "follow",
-    referrerPolicy: "no-referrer",
-    body: JSON.stringify({
-      username: userBarEmailInput.value,
-      password: userBarPasswordInput.value,
-    }),
-  });
-  const json = await response.json();
-  console.log(json);
-};
+const createAccountBtn = document.getElementById("create-account-btn");
+const userNameInput = document.getElementById("userNameInput");
+const firstNameInput = document.getElementById("firstNameInput");
+const LastNameInput = document.getElementById("LastNameInput");
+const emailInput = document.getElementById("emailInput");
+const confirmPasswordInput = document.getElementById("confirmPasswordInput");
+const cartBuyNowBtn = document.getElementById("cart-buy-now-btn");

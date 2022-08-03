@@ -5,8 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Joeva</title>
+    <link defer rel="stylesheet" href="../css/reset.css" />
     <link defer rel="stylesheet" href="../css/style.css" />
     <script defer src="../js/index.js"></script>
+    <script defer src="../js/navbar.js"></script>
+    <script defer src="../js/user.js"></script>
+    <script defer src="../js/buyNow.js"></script>
   </head>
   <body>
     <div id="app">
@@ -24,7 +28,7 @@
             </button>
           </div>
           <div class="toolbar-group">
-            <a href="/" id="brand-link">
+            <a href="/basic_homepage" id="brand-link">
               <img src="../assets/svg/joeva.svg" alt="brand-svg" id="brand-svg" />
             </a>
           </div>
@@ -42,35 +46,39 @@
             <div class="menu-bullet">
               <div class="menu-bullet-icon">»</div>
             </div>
-            <a href="" class="menu-link">Dads-R-Us</a>
+            <a href="http://127.0.0.1:3005/baby_products/all_your_baby_needs" class="menu-link">Babies</a>
           </li>
           <li class="menu-item">
             <div class="menu-bullet">
               <div class="menu-bullet-icon">»</div>
             </div>
-            <a href="" class="menu-link">Electronics</a>
+            <a href="http://127.0.0.1:3005/pc_parts/insane_pc_stuff" class="menu-link">Electronics</a>
           </li>
           <li class="menu-item">
             <div class="menu-bullet">
               <div class="menu-bullet-icon">»</div>
             </div>
-            <a href="" class="menu-link">Boujie Apparel</a>
+            <a href="http://127.0.0.1:3005/boujieeclothes/expensiveclothes" class="menu-link">Apparel</a>
           </li>
           <li class="menu-item">
             <div class="menu-bullet">
               <div class="menu-bullet-icon">»</div>
             </div>
-            <a href="" class="menu-link">Freemium-4-Premiums</a>
+            <a href="http://127.0.0.1:3005/free_junk/get_your_free_stuff_here" class="menu-link">Freemium</a>
           </li>
         </menu>
         <form id="search-bar" data-state="collapsed">
           <input type="text" id="search-bar-input">
         </form>
         <form id="user-bar" data-state="collapsed">
-          <input type="text" id="user-bar-email-input">
-          <input type="password" id="user-bar-password-input">
+          <input type="text" id="user-bar-email-input" placeholder="Email">
+          <input type="password" id="user-bar-password-input" placeholder="Password">
           <button id="user-bar-submit-btn">Login</button>
-          <a href="" id="user-bar-create-account">Create Account</a>
+          <a href="#" id="user-bar-guest-account">Continue as Guest</a>
+          <a href="http://127.0.0.1:3005/login_page/new_user" id="user-bar-create-account">Create Account</a>
+          <button style="display: none;" id="user-bar-log-out-btn">Log Out</button>
+          <button style="display: none;" id="user-bar-update-password-btn">Update Password</button>
+          <button style="display: none;" id="user-bar-delete-account-btn">Delete Account</button>
         </form>
         <menu id="cart" data-state="collapsed">
           <li class="cart-item">
@@ -78,6 +86,5 @@
           </li>
         </menu>
     </nav>
-    <a href="http://127.0.0.1:3005/baby_products/all_your_baby_needs" id="baby">BABY</a>
   </body>
 </html>

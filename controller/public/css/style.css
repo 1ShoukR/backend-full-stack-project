@@ -1,37 +1,10 @@
-*:not(head) {
-  display: block;
-  position: relative;
-  box-sizing: border-box;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  font-family: sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  color: var(--foreground-primary);
-  text-decoration: none;
-  letter-spacing: 0.125rem;
-  cursor: default;
-}
-
-:root {
-  --foreground-primary: #242124;
-  --foreground-accent: #ff355e;
-  --foreground-accent--hover: #ff1c4f;
-  --background-primary: #f5f5f5;
-  --background-accent: #949194;
-}
-
-[data-state="collapsed"] {
+/* [data-state="collapsed"] {
   transition: all 175ms ease-out;
   -webkit-transition: all 175ms ease-out;
   -moz-transition: all 175ms ease-out;
   -o-transition: all 175ms ease-out;
   transition: all 175ms ease-out;
-}
+} */
 
 [data-state="expanded"] {
   transition: all 175ms ease-in;
@@ -90,7 +63,7 @@
 }
 
 #navbar[data-state="expanded--user-bar"] {
-  height: 13rem;
+  height: 17rem;
 }
 
 #toolbar {
@@ -225,6 +198,7 @@
 }
 
 #search-bar[data-state="expanded"] {
+  z-index: 2;
 }
 
 #search-bar-input {
@@ -258,6 +232,7 @@
 }
 
 #user-bar[data-state="expanded"] {
+  z-index: 2;
 }
 
 #user-bar-email-input {
@@ -275,7 +250,7 @@
 }
 
 #user-bar-submit-btn {
-  grid-column: 2 / 4;
+  grid-column: 1 / 5;
   padding-inline: 3rem;
   background-color: var(--foreground-accent);
   border-radius: 0.125rem;
@@ -283,13 +258,59 @@
   cursor: pointer;
 }
 
-#user-bar-create-account {
-  grid-column: 2 / 4;
+#user-bar-log-out-btn {
+  grid-column: 1 / 5;
+  padding-inline: 3rem;
+  background-color: var(--foreground-accent);
+  border-radius: 0.125rem;
+  color: var(--background-primary);
+  cursor: pointer;
+}
+
+#user-bar-update-password-btn {
+  grid-column: 1 / 5;
+  padding-inline: 3rem;
+  background-color: var(--foreground-accent);
+  border-radius: 0.125rem;
+  color: var(--background-primary);
+  cursor: pointer;
+}
+
+#user-bar-delete-account-btn {
+  grid-column: 1 / 5;
+  padding-inline: 3rem;
+  background-color: var(--foreground-accent);
+  border-radius: 0.125rem;
+  color: var(--background-primary);
+  cursor: pointer;
+}
+
+#user-bar-submit-btn:hover,
+#user-bar-log-out-btn:hover,
+#user-bar-change-password-btn:hover,
+#user-bar-delete-account-btn:hover {
+  background-color: var(--foreground-accent--hover);
+}
+
+#user-bar-guest-account {
+  grid-column: 1 / 5;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-inline: 3rem;
   font-size: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+#user-bar-create-account {
+  grid-column: 1 / 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 3rem;
+  font-size: 0.75rem;
+  text-align: center;
   cursor: pointer;
 }
 

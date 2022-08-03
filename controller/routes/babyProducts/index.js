@@ -18,8 +18,9 @@ router.get("/all_your_baby_needs", checkLogin, async (req, res) => {
   const babyStuffToGet = await babyProducts.findAll();
   console.log(babyStuffToGet);
   res.render("babyProducts.html", {
-    Locals: {
-      babyNeeds: babyProducts,
+    locals: {
+      test: "test",
+      babyNeeds: babyStuffToGet,
     },
   });
 });

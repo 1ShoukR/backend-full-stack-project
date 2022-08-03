@@ -1,12 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>create user</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joeva</title>
+    <link defer rel="stylesheet" href="../css/reset.css" />
+    <link defer rel="stylesheet" href="../css/style.css" />
+    <link defer rel="stylesheet" href="../css/newUser.css" />
+    <script defer src="../js/index.js"></script>
+    <script defer src="../js/navbar.js"></script>
+    <script defer src="../js/user.js"></script>
+    <script defer src="../js/createUser.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header id="banner">
+        <h6 id="promo">USE PROMO CODE <span id="promo-span">SON-OF-A</span> FOR 50% OFF</h6>
+      </header>
+      <nav id="navbar" data-state="collapsed">
+        <div id="toolbar">
+          <div class="toolbar-group">
+            <button id="menu-btn" class="toolbar-btn" data-state="collapsed">
+              <img src="../assets/svg/bars-solid.svg" alt="menu-btn-svg" class="toolbar-btn-svg" />
+            </button>
+            <button id="search-btn" class="toolbar-btn" data-state="collapsed">
+              <img src="../assets/svg/magnifying-glass-solid.svg" alt="search-btn-svg" class="toolbar-btn-svg" />
+            </button>
+          </div>
+          <div class="toolbar-group">
+            <a href="/basic_homepage" id="brand-link">
+              <img src="../assets/svg/joeva.svg" alt="brand-svg" id="brand-svg" />
+            </a>
+          </div>
+          <div class="toolbar-group">
+            <button id="user-btn" class="toolbar-btn" data-state="collapsed">
+              <img src="../assets/svg/user-solid.svg" alt="user-btn-svg" class="toolbar-btn-svg" />
+            </button>
+            <button id="cart-btn" class="toolbar-btn" data-state="collapsed">
+              <img src="../assets/svg/cart-shopping-solid.svg" alt="cart-btn-svg" class="toolbar-btn-svg" />
+            </button>
+          </div>
+        </div>
+        <menu id="menu" data-state="collapsed">
+          <li class="menu-item">
+            <div class="menu-bullet">
+              <div class="menu-bullet-icon">»</div>
+            </div>
+            <a href="" class="menu-link">Babies</a>
+          </li>
+          <li class="menu-item">
+            <div class="menu-bullet">
+              <div class="menu-bullet-icon">»</div>
+            </div>
+            <a href="" class="menu-link">Electronics</a>
+          </li>
+          <li class="menu-item">
+            <div class="menu-bullet">
+              <div class="menu-bullet-icon">»</div>
+            </div>
+            <a href="" class="menu-link">Apparel</a>
+          </li>
+          <li class="menu-item">
+            <div class="menu-bullet">
+              <div class="menu-bullet-icon">»</div>
+            </div>
+            <a href="" class="menu-link">Freemium</a>
+          </li>
+        </menu>
+        <form id="search-bar" data-state="collapsed">
+          <input type="text" id="search-bar-input" />
+        </form>
+        <form id="user-bar" data-state="collapsed">
+          <input type="text" id="user-bar-email-input" placeholder="Email" />
+          <input type="password" id="user-bar-password-input" placeholder="Password" />
+          <button id="user-bar-submit-btn">Login</button>
+          <a href="#" id="user-bar-guest-account">Continue as Guest</a>
+          <a href="http://127.0.0.1:3005/login_page/new_user" id="user-bar-create-account">Create Account</a>
+          <button style="display: none" id="user-bar-log-out-btn">Log Out</button>
+          <button style="display: none" id="user-bar-update-password-btn">Update Password</button>
+          <button style="display: none" id="user-bar-delete-account-btn">Delete Account</button>
+        </form>
+        <menu id="cart" data-state="collapsed">
+          <li class="cart-item">
+            <button id="cart-buy-now-btn">Buy Now</button>
+          </li>
+        </menu>
+      </nav>
+      <div id="new-user-form">
+        <input type="text" id="userNameInput" placeholder="Username" />
+        <input type="text" id="firstNameInput" placeholder="First" />
+        <input type="text" id="LastNameInput" placeholder="Last" />
+        <input type="email" id="emailInput" placeholder="Email" />
+        <input type="password" id="passwordInput" placeholder="Password" />
+        <input type="password" id="confirmPasswordInput" placeholder="Re-Type Password" />
+        <button id="create-account-btn">Create Account</button>
+      </div>
+    </div>
+  </body>
 </html>

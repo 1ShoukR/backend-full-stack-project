@@ -19,7 +19,8 @@ router.get("/logout", (req, res) => {
   console.log(req.session);
   req.session.user = null;
   console.log(req.session.user);
-  res.render("loginPage.html");
+  // res.render("loginPage.html");
+  res.send("nothing");
 });
 
 // user login
@@ -60,6 +61,10 @@ router.post("/user_login", async (req, res) => {
   } catch (error) {
     res.status(400).send(error);
   }
+});
+
+router.get("/new_user", async (req, res) => {
+  res.render("createUser.html");
 });
 
 //create a user
@@ -106,7 +111,7 @@ router.post("/create_user", async (req, res) => {
       const createUser = await user.create(encryptedUser);
       console.log(createUser);
       res.status(200);
-      res.redirect("/basic_homepage");
+      res.redirect("/basic_homepage/");
     } else {
       console.log("email is not valid");
       res.render("createUser.html");
@@ -133,7 +138,8 @@ router.post("/guestlogin", async (req, res) => {
   if (guestUser) {
     req.session.user = guestUser;
     console.log(req.session.user);
-    res.redirect("/basic_homepage");
+    // res.redirect("/basic_homepage");
+    res.send("nothing");
   } else {
     res.json({
       message: "Login Failed",
@@ -173,10 +179,10 @@ router.put("/update_password", async (req, res) => {
 });
 
 // delete account
-router.delete("/delete_user/:id", async (req, res) => {
+router.delete("/delete_user", async (req, res) => {
   const deleteUser = await user.findOne({
     where: {
-      id: req.params.id,
+      id: req.session.user.id,
     },
   });
   if (deleteUser) {
