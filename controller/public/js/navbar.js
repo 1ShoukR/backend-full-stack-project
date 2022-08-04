@@ -1,86 +1,26 @@
-const getState = element => {
-  return element.dataset.state;
-};
-
-const setState = (element, state) => {
-  element.dataset.state = state;
-};
-
-menuBtn.onclick = () => {
-  setState(navbar, "collapsed");
-  setState(searchBtn, "collapsed");
-  setState(userBtn, "collapsed");
-  setState(userBar, "collapsed");
-  setState(cartBtn, "collapsed");
-  setState(cart, "collapsed");
-  switch (getState(menuBtn)) {
-    case "collapsed":
-      setState(menuBtn, "expanded");
-      setState(menu, "expanded");
-      break;
-    default:
-      setState(menuBtn, "collapsed");
-      setState(menu, "collapsed");
+window.onload = async () => {
+  const response = await fetch("http://127.0.0.1:3005/basic_homepage/get_current_user");
+  const json = await response.json();
+  console.log(json);
+  if (json.username !== null) {
+    $dropdownUsername.innerText = json.firstName + " " + json.lastName;
   }
 };
 
-searchBtn.onclick = () => {
-  setState(userBtn, "collapsed");
-  setState(userBar, "collapsed");
-  setState(menuBtn, "collapsed");
-  setState(menu, "collapsed");
-  setState(cartBtn, "collapsed");
-  setState(cart, "collapsed");
-  switch (getState(searchBtn)) {
-    case "collapsed":
-      setState(navbar, "expanded--search-bar");
-      setState(searchBtn, "expanded");
-      setState(searchBar, "expanded");
-      searchBarInput.focus();
-      break;
-    default:
-      setState(navbar, "collapsed");
-      setState(searchBtn, "collapsed");
-      setState(searchBar, "collapsed");
-      searchBarInput.blur();
-  }
+$navbarBurger.onclick = () => {
+  $navbarMenuStart.classList.toggle("is-active");
+  $navbarMenuEnd.classList.toggle("is-active");
 };
 
-userBtn.onclick = () => {
-  setState(searchBtn, "collapsed");
-  setState(searchBar, "collapsed");
-  setState(menuBtn, "collapsed");
-  setState(menu, "collapsed");
-  setState(cartBtn, "collapsed");
-  setState(cart, "collapsed");
-  switch (getState(userBtn)) {
-    case "collapsed":
-      setState(navbar, "expanded--user-bar");
-      setState(userBtn, "expanded");
-      setState(userBar, "expanded");
-      userBarEmailInput.focus();
+$navbarLoginButton.onclick = () => {
+  $loginForm.classList.toggle("is-hidden");
+  switch ($navbarLoginButton.innerText) {
+    case "Login":
+      $navbarLoginButton.innerHTML = '<i class="fas fa-xmark"></i>';
+      $navbarLoginButton.classList.add("has-background-danger", "has-text-white");
       break;
     default:
-      setState(navbar, "collapsed");
-      setState(userBtn, "collapsed");
-      setState(userBar, "collapsed");
-      userBarEmailInput.blur();
-  }
-};
-
-cartBtn.onclick = () => {
-  setState(navbar, "collapsed");
-  setState(searchBtn, "collapsed");
-  setState(userBtn, "collapsed");
-  setState(menuBtn, "collapsed");
-  setState(menu, "collapsed");
-  switch (getState(cartBtn)) {
-    case "collapsed":
-      setState(cart, "expanded");
-      setState(cartBtn, "expanded");
-      break;
-    default:
-      setState(cart, "collapsed");
-      setState(cartBtn, "collapsed");
+      $navbarLoginButton.classList.remove("has-background-danger", "has-text-white");
+      $navbarLoginButton.innerHTML = "Login";
   }
 };

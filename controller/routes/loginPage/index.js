@@ -10,7 +10,7 @@ const checkLogin = (req, res, next) => {
   if (req.session.user) {
     next();
   } else {
-    res.render("createUser.html");
+    res.render("create-user.html");
   }
 };
 
@@ -20,7 +20,7 @@ router.get("/logout", (req, res) => {
   req.session.user = null;
   console.log(req.session.user);
   // res.render("loginPage.html");
-  res.send("nothing");
+  res.render("index.html");
 });
 
 // user login
@@ -64,7 +64,7 @@ router.post("/user_login", async (req, res) => {
 });
 
 router.get("/new_user", async (req, res) => {
-  res.render("createUser.html");
+  res.render("create-user.html");
 });
 
 //create a user
@@ -111,13 +111,13 @@ router.post("/create_user", async (req, res) => {
       const createUser = await user.create(encryptedUser);
       console.log(createUser);
       res.status(200);
-      res.redirect("/basic_homepage/");
+      res.redirect("../basic_homepage/");
     } else {
       console.log("email is not valid");
-      res.render("createUser.html");
+      res.render("create-user.html");
     }
   } catch (error) {
-    res.render("createUser.html");
+    res.render("create-user.html");
     // res.status(400).redirect('/create_user');
   }
 });
@@ -139,7 +139,7 @@ router.post("/guestlogin", async (req, res) => {
     req.session.user = guestUser;
     console.log(req.session.user);
     // res.redirect("/basic_homepage");
-    res.send("nothing");
+    res.send(JSON.stringify(guestUser));
   } else {
     res.json({
       message: "Login Failed",
@@ -166,11 +166,11 @@ router.put("/update_password", async (req, res) => {
         password: hashedPassword,
         updatedAt: new Date(),
       });
-      res.render("createUser.html"); // give alert that password has been updated
+      res.render("create-user.html"); // give alert that password has been updated
     } catch (error) {
       console.log(error);
       res.status(400); // give an alert that says password did not get submitted
-      res.render("createUser.html");
+      res.render("create-user.html");
     }
   } catch (error) {
     console.log(error);

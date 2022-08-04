@@ -22,9 +22,9 @@
 
 # Promo Code in Cart
 
-# Add Home Link in Nav Menu
+<!-- # Add Home Link in Nav Menu -->
 
-# Searchbar (if time)
+<!-- # Searchbar (if time) -->
 
 # HTML Pages
 
@@ -32,4 +32,4 @@
 
 # Styling
 
-# Email to Username
+<!-- # Email to Username -->

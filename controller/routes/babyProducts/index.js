@@ -8,7 +8,7 @@ const checkLogin = (req, res, next) => {
   if (req.session.user) {
     next();
   } else {
-    res.render("createUser.html");
+    res.render("create-user.html");
   }
 };
 
@@ -17,7 +17,7 @@ router.get("/all_your_baby_needs", checkLogin, async (req, res) => {
   console.log(req.session.user);
   const babyStuffToGet = await babyProducts.findAll();
   console.log(babyStuffToGet);
-  res.render("babyProducts.html", {
+  res.render("baby.html", {
     locals: {
       test: "test",
       babyNeeds: babyStuffToGet,

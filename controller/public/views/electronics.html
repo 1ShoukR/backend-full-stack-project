@@ -7,10 +7,7 @@
     <title>Joeva</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
     <script defer src="https://kit.fontawesome.com/a7e0ce798b.js" crossorigin="anonymous"></script>
-    <script defer src="../js/variables.js"></script>
     <script defer src="../js/app.js"></script>
-    <script defer src="../js/navbar.js"></script>
-    <script defer src="../js/login.js"></script>
   </head>
   <body>
     <div class="box">
@@ -30,17 +27,17 @@
             <div class="navbar-start">
               <div class="navbar-item">
                 <div class="buttons">
-                  <a href="http://127.0.0.1:3005/login_page/new_user" id="navbar-sign-up-button" class="button is-primary">
-                    <strong>Sign Up</strong>
+                  <a class="button is-primary">
+                    <strong>Sign up</strong>
                   </a>
                   <button id="navbar-login-button" class="button is-light">Login</button>
-                  <div id="dropdown-user-menu" class="dropdown is-hoverable is-hidden">
+                  <div class="dropdown is-hoverable is-hidden">
                     <div class="dropdown-trigger">
                       <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
                         <span class="icon is-small">
                           <i class="fas fa-user" aria-hidden="true"></i>
                         </span>
-                        <span id="dropdown-username">Username</span>
+                        <span>West McMillen</span>
                         <span class="icon is-small">
                           <i class="fas fa-angle-down" aria-hidden="true"></i>
                         </span>
@@ -48,23 +45,13 @@
                     </div>
                     <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                       <div class="dropdown-content">
-                        <div id="dropdown-settings-button" class="dropdown-item">
+                        <div class="dropdown-item">
                           <a href="/" class="link">
                             <span class="icon-text">
                               <span class="icon">
                                 <i class="fa-solid fa-cog"></i>
                               </span>
                               <span>Settings</span>
-                            </span>
-                          </a>
-                        </div>
-                        <div class="dropdown-item">
-                          <a href="/login_page/logout" class="link">
-                            <span class="icon-text">
-                              <span class="icon">
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                              </span>
-                              <span>Logout</span>
                             </span>
                           </a>
                         </div>
@@ -140,7 +127,7 @@
       <div id="login-form" class="container is-hidden">
         <div class="field">
           <p class="control has-icons-left has-icons-right">
-            <input id="login-form-username-input" class="input" type="text" placeholder="Username" />
+            <input class="input" type="text" placeholder="Username" />
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -151,7 +138,7 @@
         </div>
         <div class="field">
           <p class="control has-icons-left">
-            <input id="login-form-password-input" class="input" type="password" placeholder="Password" />
+            <input class="input" type="password" placeholder="Password" />
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
@@ -159,15 +146,31 @@
         </div>
         <div class="field">
           <p class="control">
-            <button id="login-form-login-button" class="button is-fullwidth is-primary">
-              <strong>Login</strong>
-            </button>
+            <button class="button is-fullwidth is-light">Login</button>
           </p>
         </div>
-        <div class="field">
-          <p class="control">
-            <button id="login-form-guest-button" class="button is-fullwidth is-light">Continue as Guest</button>
-          </p>
+      </div>
+    </div>
+    <div class="container has-background-white-bis">
+      <!--  -->
+      <div class="box">
+        <div class="columns is-multiline is-mobile">
+          ${pcParts.map(item => `
+          <div class="column is-mobile is-one-quarter">
+            <div class="block">
+              <p class="title is-4 has-text-centered">${item.name}</p>
+              <div class="block">
+                <figure style="margin-inline: auto; overflow: clip" class="image has-text-centered is-128x128">
+                  <img src="${item.dataValues.img}" />
+                </figure>
+              </div>
+              <button data-category="pcParts" data-id="${item.dataValues.id}" data-name="${item.dataValues.name}" data-price="${item.dataValues.price}" class="button is-fullwidth is-primary">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+          `).join("")}
+          <!--  -->
         </div>
       </div>
     </div>
