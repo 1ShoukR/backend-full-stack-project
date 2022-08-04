@@ -43,3 +43,7 @@
 # Highlight what page your on
 
 <!-- # footers -->
+
+<!-- # NAN -->
+
+# Added to cart alert

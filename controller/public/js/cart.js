@@ -4,7 +4,9 @@ const itemsInCart = JSON.parse(localStorage.getItem("cartItems")) === null ? [] 
 let runningTotal = 0;
 
 [...itemsInCart].map(item => {
-  runningTotal += +item.price.replace("$", "");
+  const stringPrice = item.price.replace("$", "").replaceAll(",", "");
+  const intPrice = parseFloat(stringPrice);
+  runningTotal += intPrice;
   const block = document.createElement("div");
   block.className = "block";
   const name = document.createElement("div");
@@ -15,6 +17,7 @@ let runningTotal = 0;
   price.innerText = "Price: " + item.price;
   block.append(name, price);
   cart.append(block);
+  console.log(runningTotal);
 });
 
 const total = document.createElement("div");
