@@ -5,86 +5,151 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Joeva</title>
-    <link defer rel="stylesheet" href="../css/reset.css" />
-    <link defer rel="stylesheet" href="../css/style.css" />
-    <script defer src="../js/index.js"></script>
-    <script defer src="../js/navbar.js"></script>
-    <script defer src="../js/user.js"></script>
-    <script defer src="../js/buyNow.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    <script defer src="https://kit.fontawesome.com/a7e0ce798b.js" crossorigin="anonymous"></script>
+    <script defer src="../js/app.js"></script>
   </head>
   <body>
-    <div id="app">
-      <header id="banner">
-        <h6 id="promo">USE PROMO CODE <span id="promo-span">SON-OF-A</span> FOR 50% OFF</h6>
-      </header>
-      <nav id="navbar" data-state="collapsed">
-        <div id="toolbar">
-          <div class="toolbar-group">
-            <button id="menu-btn" class="toolbar-btn" data-state="collapsed">
-              <img src="../assets/svg/bars-solid.svg" alt="menu-btn-svg" class="toolbar-btn-svg" />
-            </button>
-            <button id="search-btn" class="toolbar-btn" data-state="collapsed">
-              <img src="../assets/svg/magnifying-glass-solid.svg" alt="search-btn-svg" class="toolbar-btn-svg" />
-            </button>
-          </div>
-          <div class="toolbar-group">
-            <a href="/basic_homepage" id="brand-link">
-              <img src="../assets/svg/joeva.svg" alt="brand-svg" id="brand-svg" />
+    <div class="box">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+              <img src="../assets/svg/joeva.svg" alt="Joeva" width="128" />
+            </a>
+            <a role="button" id="navbar-burger" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
             </a>
           </div>
-          <div class="toolbar-group">
-            <button id="user-btn" class="toolbar-btn" data-state="collapsed">
-              <img src="../assets/svg/user-solid.svg" alt="user-btn-svg" class="toolbar-btn-svg" />
-            </button>
-            <button id="cart-btn" class="toolbar-btn" data-state="collapsed">
-              <img src="../assets/svg/cart-shopping-solid.svg" alt="cart-btn-svg" class="toolbar-btn-svg" />
-            </button>
+          <div id="navbar-menu-start" class="navbar-menu is-shadowless">
+            <div class="navbar-start">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-primary">
+                    <strong>Sign up</strong>
+                  </a>
+                  <button id="navbar-login-button" class="button is-light">Login</button>
+                  <div class="dropdown is-hoverable is-hidden">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                        <span class="icon is-small">
+                          <i class="fas fa-user" aria-hidden="true"></i>
+                        </span>
+                        <span>West McMillen</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                      <div class="dropdown-content">
+                        <div class="dropdown-item">
+                          <a href="/" class="link">
+                            <span class="icon-text">
+                              <span class="icon">
+                                <i class="fa-solid fa-cog"></i>
+                              </span>
+                              <span>Settings</span>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button id="navbar-logout-button" class="button is-light is-hidden">Logout</button>
+                  <button id="navbar-settings-button" class="button is-light is-hidden">
+                    <a href="/" class="link is-clickable">
+                      <span class="icon">
+                        <i class="fas fa-cog"></i>
+                      </span>
+                    </a>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
+          <div id="navbar-menu-end" class="navbar-menu is-shadowless">
+            <div class="navbar-end is-flex-direction-row">
+              <a href="/" class="navbar-item link is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fas fa-home"></i>
+                  </span>
+                  <span>Home</span>
+                </span>
+              </a>
+              <a href="/" class="navbar-item link is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fa-solid fa-baby-carriage"></i>
+                  </span>
+                  <span>Baby</span>
+                </span>
+              </a>
+              <a href="/" class="navbar-item link is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fa-solid fa-computer-mouse"></i>
+                  </span>
+                  <span>Electronics</span>
+                </span>
+              </a>
+              <a href="/" class="navbar-item link is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fa-solid fa-shirt"></i>
+                  </span>
+                  <span>Fashion</span>
+                </span>
+              </a>
+              <a href="/" class="navbar-item link is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fa-solid fa-sack-dollar"></i>
+                  </span>
+                  <span>Free</span>
+                </span>
+              </a>
+              <a href="/" class="navbar-item link is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                  </span>
+                  <span>Cart</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="login-form" class="container is-hidden">
+        <div class="field">
+          <p class="control has-icons-left has-icons-right">
+            <input class="input" type="text" placeholder="Username" />
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right is-hidden">
+              <i class="fas fa-check"></i>
+            </span>
+          </p>
         </div>
-        <menu id="menu" data-state="collapsed">
-          <li class="menu-item">
-            <div class="menu-bullet">
-              <div class="menu-bullet-icon">»</div>
-            </div>
-            <a href="http://127.0.0.1:3005/baby_products/all_your_baby_needs" class="menu-link">Babies</a>
-          </li>
-          <li class="menu-item">
-            <div class="menu-bullet">
-              <div class="menu-bullet-icon">»</div>
-            </div>
-            <a href="http://127.0.0.1:3005/pc_parts/insane_pc_stuff" class="menu-link">Electronics</a>
-          </li>
-          <li class="menu-item">
-            <div class="menu-bullet">
-              <div class="menu-bullet-icon">»</div>
-            </div>
-            <a href="http://127.0.0.1:3005/boujieeclothes/expensiveclothes" class="menu-link">Apparel</a>
-          </li>
-          <li class="menu-item">
-            <div class="menu-bullet">
-              <div class="menu-bullet-icon">»</div>
-            </div>
-            <a href="http://127.0.0.1:3005/free_junk/get_your_free_stuff_here" class="menu-link">Freemium</a>
-          </li>
-        </menu>
-        <form id="search-bar" data-state="collapsed">
-          <input type="text" id="search-bar-input">
-        </form>
-        <form id="user-bar" data-state="collapsed">
-          <input type="text" id="user-bar-email-input" placeholder="Email">
-          <input type="password" id="user-bar-password-input" placeholder="Password">
-          <button id="user-bar-submit-btn">Login</button>
-          <a href="#" id="user-bar-guest-account">Continue as Guest</a>
-          <a href="http://127.0.0.1:3005/login_page/new_user" id="user-bar-create-account">Create Account</a>
-          <button style="display: none;" id="user-bar-log-out-btn">Log Out</button>
-          <button style="display: none;" id="user-bar-update-password-btn">Update Password</button>
-          <button style="display: none;" id="user-bar-delete-account-btn">Delete Account</button>
-        </form>
-        <menu id="cart" data-state="collapsed">
-          <li class="cart-item">
-            <button id="cart-buy-now-btn">Buy Now</button>
-          </li>
-        </menu>
-    </nav>
+        <div class="field">
+          <p class="control has-icons-left">
+            <input class="input" type="password" placeholder="Password" />
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <button class="button is-fullwidth is-light">Login</button>
+          </p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
