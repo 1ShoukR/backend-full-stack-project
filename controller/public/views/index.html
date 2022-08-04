@@ -186,20 +186,53 @@
             </button>
           </div>
         </section>
-        <div class="level">
-          <div class="level-item level-left">
-            <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between" class="box">
-              <p class="title has-text-centered">${theBlkeCollection[0].name}</p>
-              <div class="block">
-                <figure style="margin-inline: auto; overflow: clip" class="image has-text-centered is-128x128">
-                  <img src="${theBlkeCollection[0].img}" />
-                </figure>
+        <div class="container">
+          <h1 class="title is-1 has-text-centered p-6">Featured Products</h1>
+          <div class="columns">
+            <div class="column is-4">
+              <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between" class="box">
+                <p class="title has-text-centered">${theBlkeCollection[1].name}</p>
+                <div class="block">
+                  <figure style="margin-inline: auto; overflow: clip" class="image has-text-centered is-128x128">
+                    <img src="${theBlkeCollection[1].img}" />
+                  </figure>
+                </div>
+                <p class="title is-3 has-text-centered"><strong>${theBlkeCollection[1].price}</strong></p>
+                <p class="title is-7 has-text-centered has-text-grey">${theBlkeCollection[1].review.replaceAll("{", "").replaceAll("}", "").replaceAll("," , "")}</p>
+                <a href="http://127.0.0.1:3005/boujieeclothes/expensiveclothes" class="button is-primary">
+                  <strong>Shop Now</strong>
+                </a>
               </div>
-              <p class="title is-3 has-text-centered"><strong>${theBlkeCollection[0].price}</strong></p>
-              <p class="title is-7 has-text-centered has-text-grey">${theBlkeCollection[0].review.replaceAll("{", "").replaceAll("}", "").replaceAll("," , "")}</p>
-              <a href="http://127.0.0.1:3005/boujieeclothes/expensiveclothes" class="button is-primary">
-                <strong>Shop Now</strong>
-              </a>
+            </div>
+            <div class="column is-4">
+              <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between" class="box">
+                <p class="title has-text-centered">${theBlkeCollection[3].name}</p>
+                <div class="block">
+                  <figure style="margin-inline: auto; overflow: clip" class="image has-text-centered is-128x128">
+                    <img src="${theBlkeCollection[3].img}" />
+                  </figure>
+                </div>
+                <p class="title is-3 has-text-centered"><strong>${theBlkeCollection[3].price}</strong></p>
+                <p class="title is-7 has-text-centered has-text-grey">${theBlkeCollection[3].review.replaceAll("{", "").replaceAll("}", "").replaceAll("," , "")}</p>
+                <a href="http://127.0.0.1:3005/boujieeclothes/expensiveclothes" class="button is-primary">
+                  <strong>Shop Now</strong>
+                </a>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between" class="box">
+                <p class="title has-text-centered">${theBlkeCollection[6].name}</p>
+                <div class="block">
+                  <figure style="margin-inline: auto; overflow: clip" class="image has-text-centered is-128x128">
+                    <img src="${theBlkeCollection[6].img}" />
+                  </figure>
+                </div>
+                <p class="title is-3 has-text-centered"><strong>${theBlkeCollection[6].price}</strong></p>
+                <p class="title is-7 has-text-centered has-text-grey">${theBlkeCollection[6].review.replaceAll("{", "").replaceAll("}", "").replaceAll("," , "")}</p>
+                <a href="http://127.0.0.1:3005/boujieeclothes/expensiveclothes" class="button is-primary">
+                  <strong>Shop Now</strong>
+                </a>
+              </div>
             </div>
           </div>
         </div>
