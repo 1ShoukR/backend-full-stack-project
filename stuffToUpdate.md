@@ -22,6 +22,8 @@
 
 # Promo Code in Cart
 
+# style cart
+
 <!-- # Add Home Link in Nav Menu -->
 
 <!-- # Searchbar (if time) -->
@@ -30,10 +32,14 @@
 
 <!-- # Update Password -->
 
-# Styling
+<!-- # Styling -->
 
-# Add reviews & price
+<!-- # Add reviews & price -->
 
-# Update Database
+<!-- # Update Database -->
 
 <!-- # Email to Username -->
+
+# Highlight what page your on
+
+<!-- # footers -->
