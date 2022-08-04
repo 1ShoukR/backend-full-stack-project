@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { boujieeClothes } = require("../../../sequelize/models");
 
 const checkLogin = (req, res, next) => {
   if (req.session.user) {
@@ -10,7 +11,13 @@ const checkLogin = (req, res, next) => {
 };
 
 router.get("/", async (req, res) => {
-  res.render("index.html", { locals: { name: req.session.user } });
+  const expensiveClothesToGet = await boujieeClothes.findAll();
+  res.render("index.html", {
+    locals: {
+      name: req.session.user,
+      theBlkeCollection: expensiveClothesToGet,
+    },
+  });
 });
 
 router.get("/get_current_user", async (req, res) => {

@@ -1,9 +1,13 @@
 window.onload = async () => {
   const response = await fetch("http://127.0.0.1:3005/basic_homepage/get_current_user");
   const json = await response.json();
-  console.log(json);
-  if (json.username !== null) {
-    $dropdownUsername.innerText = json.firstName + " " + json.lastName;
+  if (response.status === 200) {
+    if (json.user !== null) {
+      $dropdownUsername.innerText = json.user.firstName + " " + json.user.lastName;
+      $dropdownUserMenu.classList.toggle("is-hidden");
+      $navbarSignUpButton.classList.toggle("is-hidden");
+      $navbarLoginButton.classList.toggle("is-hidden");
+    }
   }
 };
 

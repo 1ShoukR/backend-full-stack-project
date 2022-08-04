@@ -45,7 +45,7 @@ $loginFormGuestButton.onclick = async () => {
     }),
   });
   const json = await response.json();
-  console.log(json);
+  console.log(response.status);
   if (response.status === 200) {
     $dropdownUsername.innerText = json.firstName + " " + json.lastName;
     $dropdownUserMenu.classList.toggle("is-hidden");
@@ -53,5 +53,6 @@ $loginFormGuestButton.onclick = async () => {
     $navbarSignUpButton.classList.toggle("is-hidden");
     $navbarLoginButton.classList.toggle("is-hidden");
     $loginForm.classList.toggle("is-hidden");
+    window.location.assign("http://127.0.0.1:3005/basic_homepage/");
   }
 };

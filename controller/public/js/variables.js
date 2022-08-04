@@ -17,3 +17,4 @@ const $createUserEmailInput = document.getElementById("create-user-email-input")
 const $createUserUsernameInput = document.getElementById("create-user-username-input");
 const $createUserPasswordInput = document.getElementById("create-user-password-input");
 const $createUserSubmitButton = document.getElementById("create-user-submit-button");
+const $updateUserSubmitButton = document.getElementById("update-user-submit-button");

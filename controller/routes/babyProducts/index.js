@@ -8,7 +8,8 @@ const checkLogin = (req, res, next) => {
   if (req.session.user) {
     next();
   } else {
-    res.render("create-user.html");
+    // res.render("create-user.html");
+    res.redirect("http://127.0.0.1:3005/login_page/new_user");
   }
 };
 

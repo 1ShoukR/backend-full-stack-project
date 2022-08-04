@@ -7,14 +7,24 @@
     <title>Joeva</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
     <script defer src="https://kit.fontawesome.com/a7e0ce798b.js" crossorigin="anonymous"></script>
+    <script defer src="../js/variables.js"></script>
     <script defer src="../js/app.js"></script>
+    <script defer src="../js/navbar.js"></script>
+    <script defer src="../js/login.js"></script>
+    <script defer src="../js/cart.js"></script>
+    <script defer src="../js/buy-now.js"></script>
   </head>
   <body>
-    <div class="box">
+    <div class="container">
+      <div class="block">
+        <p class="container has-text-centered is-size-7">USE PROMO CODE <strong class="has-text-primary">SON-OF-A</strong> FOR 0% OFF</p>
+      </div>
+    </div>
+    <div style="position: sticky; top: 0; z-index: 100" class="box">
       <div class="container">
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
-            <a class="navbar-item" href="#">
+            <a href="http://127.0.0.1:3005/basic_homepage" class="navbar-item" href="#">
               <img src="../assets/svg/joeva.svg" alt="Joeva" width="128" />
             </a>
             <a role="button" id="navbar-burger" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
@@ -27,17 +37,17 @@
             <div class="navbar-start">
               <div class="navbar-item">
                 <div class="buttons">
-                  <a class="button is-primary">
-                    <strong>Sign up</strong>
+                  <a href="http://127.0.0.1:3005/login_page/new_user" id="navbar-sign-up-button" class="button is-primary">
+                    <strong>Sign Up</strong>
                   </a>
                   <button id="navbar-login-button" class="button is-light">Login</button>
-                  <div class="dropdown is-hoverable is-hidden">
+                  <div id="dropdown-user-menu" class="dropdown is-hoverable is-hidden">
                     <div class="dropdown-trigger">
                       <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
                         <span class="icon is-small">
                           <i class="fas fa-user" aria-hidden="true"></i>
                         </span>
-                        <span>West McMillen</span>
+                        <span id="dropdown-username">Username</span>
                         <span class="icon is-small">
                           <i class="fas fa-angle-down" aria-hidden="true"></i>
                         </span>
@@ -45,13 +55,23 @@
                     </div>
                     <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                       <div class="dropdown-content">
-                        <div class="dropdown-item">
-                          <a href="/" class="link">
+                        <div id="dropdown-settings-button" class="dropdown-item">
+                          <a href="http://127.0.0.1:3005/login_page/settings" class="link">
                             <span class="icon-text">
                               <span class="icon">
                                 <i class="fa-solid fa-cog"></i>
                               </span>
                               <span>Settings</span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="dropdown-item">
+                          <a href="/login_page/logout" class="link">
+                            <span class="icon-text">
+                              <span class="icon">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                              </span>
+                              <span>Logout</span>
                             </span>
                           </a>
                         </div>
@@ -112,7 +132,7 @@
                   <span>Free</span>
                 </span>
               </a>
-              <a href="/" class="navbar-item link is-clickable">
+              <a href="/add_to_cart/cart" class="navbar-item link is-clickable">
                 <span class="icon-text">
                   <span class="icon">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -127,7 +147,7 @@
       <div id="login-form" class="container is-hidden">
         <div class="field">
           <p class="control has-icons-left has-icons-right">
-            <input class="input" type="text" placeholder="Username" />
+            <input id="login-form-username-input" class="input" type="text" placeholder="Username" />
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -138,7 +158,7 @@
         </div>
         <div class="field">
           <p class="control has-icons-left">
-            <input class="input" type="password" placeholder="Password" />
+            <input id="login-form-password-input" class="input" type="password" placeholder="Password" />
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
@@ -146,9 +166,22 @@
         </div>
         <div class="field">
           <p class="control">
-            <button class="button is-fullwidth is-light">Login</button>
+            <button id="login-form-login-button" class="button is-fullwidth is-primary">
+              <strong>Login</strong>
+            </button>
           </p>
         </div>
+        <div class="field">
+          <p class="control">
+            <button id="login-form-guest-button" class="button is-fullwidth is-light">Continue as Guest</button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="box">
+        <div id="cart" class="container"></div>
+        <button id="cart-buy-now-button" class="button is-primary">Buy Now</button>
       </div>
     </div>
   </body>

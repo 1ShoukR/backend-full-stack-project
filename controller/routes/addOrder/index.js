@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const { Order } = require("../../../sequelize/models");
 
+router.get("/cart", async (req, res) => {
+  res.render("cart.html");
+});
+
 const checkLogin = (req, res, next) => {
   // add this function to every routes page and have it redirect them to the login page html file
   if (req.session.user) {

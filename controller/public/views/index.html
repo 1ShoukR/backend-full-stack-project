@@ -13,11 +13,16 @@
     <script defer src="../js/login.js"></script>
   </head>
   <body>
-    <div class="box">
+    <div class="container">
+      <div class="block">
+        <p class="container has-text-centered is-size-7">USE PROMO CODE <strong class="has-text-primary">SON-OF-A</strong> FOR 0% OFF</p>
+      </div>
+    </div>
+    <div style="position: sticky; top: 0; z-index: 100" class="box">
       <div class="container">
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
-            <a class="navbar-item" href="#">
+            <a href="http://127.0.0.1:3005/basic_homepage" class="navbar-item" href="#">
               <img src="../assets/svg/joeva.svg" alt="Joeva" width="128" />
             </a>
             <a role="button" id="navbar-burger" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
@@ -49,7 +54,7 @@
                     <div class="dropdown-menu" id="dropdown-menu4" role="menu">
                       <div class="dropdown-content">
                         <div id="dropdown-settings-button" class="dropdown-item">
-                          <a href="/" class="link">
+                          <a href="http://127.0.0.1:3005/login_page/settings" class="link">
                             <span class="icon-text">
                               <span class="icon">
                                 <i class="fa-solid fa-cog"></i>
@@ -125,7 +130,7 @@
                   <span>Free</span>
                 </span>
               </a>
-              <a href="/" class="navbar-item link is-clickable">
+              <a href="/add_to_cart/cart" class="navbar-item link is-clickable">
                 <span class="icon-text">
                   <span class="icon">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -168,6 +173,35 @@
           <p class="control">
             <button id="login-form-guest-button" class="button is-fullwidth is-light">Continue as Guest</button>
           </p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="container">
+        <section class="hero is-medium is-info" style="background-image: url('../assets/jpeg/the_blke_collection.jpeg'); background-size: cover">
+          <div class="hero-body">
+            <p class="title is-size-1">The Blke Collection</p>
+            <button class="button is-primary is-large is-responsive">
+              <strong>Shop Now</strong>
+            </button>
+          </div>
+        </section>
+        <div class="level">
+          <div class="level-item level-left">
+            <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between" class="box">
+              <p class="title has-text-centered">${theBlkeCollection[0].name}</p>
+              <div class="block">
+                <figure style="margin-inline: auto; overflow: clip" class="image has-text-centered is-128x128">
+                  <img src="${theBlkeCollection[0].img}" />
+                </figure>
+              </div>
+              <p class="title is-3 has-text-centered"><strong>${theBlkeCollection[0].price}</strong></p>
+              <p class="title is-7 has-text-centered has-text-grey">${theBlkeCollection[0].review.replaceAll("{", "").replaceAll("}", "").replaceAll("," , "")}</p>
+              <a href="http://127.0.0.1:3005/boujieeclothes/expensiveclothes" class="button is-primary">
+                <strong>Shop Now</strong>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

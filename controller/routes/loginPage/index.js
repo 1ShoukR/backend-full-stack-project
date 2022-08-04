@@ -20,7 +20,7 @@ router.get("/logout", (req, res) => {
   req.session.user = null;
   console.log(req.session.user);
   // res.render("loginPage.html");
-  res.render("index.html");
+  res.redirect("http://127.0.0.1:3005/basic_homepage");
 });
 
 // user login
@@ -67,6 +67,10 @@ router.get("/new_user", async (req, res) => {
   res.render("create-user.html");
 });
 
+router.get("/settings", async (req, res) => {
+  res.render("settings.html");
+});
+
 //create a user
 router.post("/create_user", async (req, res) => {
   //after creating an account, redirect them to homepage;
@@ -110,8 +114,8 @@ router.post("/create_user", async (req, res) => {
       console.log(user);
       const createUser = await user.create(encryptedUser);
       console.log(createUser);
-      res.status(200);
-      res.redirect("../basic_homepage/");
+      // res.redirect("/basic_homepage");
+      res.status(200).redirect("/basic_homepage");
     } else {
       console.log("email is not valid");
       res.render("create-user.html");
@@ -139,6 +143,7 @@ router.post("/guestlogin", async (req, res) => {
     req.session.user = guestUser;
     console.log(req.session.user);
     // res.redirect("/basic_homepage");
+    res.status(200);
     res.send(JSON.stringify(guestUser));
   } else {
     res.json({

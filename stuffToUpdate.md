@@ -12,13 +12,13 @@
 
 ## WEST
 
-# Add to Cart
+<!-- # Add to Cart -->
 
 # Remove from Cart
 
-# Display Cart Items
+<!-- # Display Cart Items -->
 
-# Clear Cart Items
+<!-- # Clear Cart Items -->
 
 # Promo Code in Cart
 
@@ -26,10 +26,14 @@
 
 <!-- # Searchbar (if time) -->
 
-# HTML Pages
+<!-- # HTML Pages -->
 
-# Update Password
+<!-- # Update Password -->
 
 # Styling
+
+# Add reviews & price
+
+# Update Database
 
 <!-- # Email to Username -->
