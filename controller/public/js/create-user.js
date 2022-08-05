@@ -20,4 +20,7 @@ $createUserSubmitButton.onclick = async () => {
   if (response.status === 200) {
     window.location.assign("http://127.0.0.1:3005/basic_homepage/");
   }
+  if (response.status === 400) {
+    alert("Error: Please enter a valid email");
+  }
 };

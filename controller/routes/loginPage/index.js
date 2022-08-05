@@ -97,11 +97,8 @@ router.post("/create_user", async (req, res) => {
       return res.status(400).send("Please enter a password");
     }
     if (emailValidator.validate(email)) {
-      console.log("email is valid");
       const salt = await bcrypt.genSalt(5);
-      console.log(salt);
       const hashedPassword = await bcrypt.hash(password, salt);
-      console.log(hashedPassword);
       const encryptedUser = {
         username: username,
         password: hashedPassword,
@@ -111,17 +108,14 @@ router.post("/create_user", async (req, res) => {
         createdAt: new Date(),
         updatedAt: new Date(),
       };
-      console.log(user);
       const createUser = await user.create(encryptedUser);
-      console.log(createUser);
       // res.redirect("/basic_homepage");
       res.status(200).redirect("/basic_homepage");
     } else {
-      console.log("email is not valid");
-      res.render("create-user.html");
+      res.status(400).render("create-user.html");
     }
   } catch (error) {
-    res.render("create-user.html");
+    res.status(400).render("create-user.html");
     // res.status(400).redirect('/create_user');
   }
 });
