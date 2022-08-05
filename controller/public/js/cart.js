@@ -1,26 +1,78 @@
 const cart = document.getElementById("cart");
 
-const itemsInCart = JSON.parse(localStorage.getItem("cartItems")) === null ? [] : [...JSON.parse(localStorage.getItem("cartItems"))];
-let runningTotal = 0;
+const getItemsInCart = () => {
+  const itemsInCart = JSON.parse(localStorage.getItem("cartItems")) === null ? [] : [...JSON.parse(localStorage.getItem("cartItems"))];
+  return itemsInCart;
+};
 
-[...itemsInCart].map(item => {
-  const stringPrice = item.price.replace("$", "").replaceAll(",", "");
-  const intPrice = parseFloat(stringPrice);
-  runningTotal += intPrice;
-  const block = document.createElement("div");
-  block.className = "block";
+const setItemsInCart = data => {
+  localStorage.setItem("cartItems", JSON.stringify(data));
+};
+
+const setTotal = () => {
+  let runningTotal = 0;
+  const itemsInCart = getItemsInCart();
+  for (let itemInCart of itemsInCart) {
+    const stringPrice = itemInCart.price.replace("$", "");
+    const floatPrice = +stringPrice;
+    runningTotal += floatPrice;
+  }
+  const total = document.getElementById("total");
+  total.innerText = runningTotal > 0 ? "$" + runningTotal.toFixed(2) : "Your Cart is Empty";
+};
+
+const createBox = () => {
+  const box = document.createElement("div");
+  box.className = "box";
+  box.classList.add("is-flex", "is-justify-content-space-between", "is-align-items-center");
+  box.onclick = event => {
+    if (event.target.classList.contains("delete")) {
+      const itemsInCart = getItemsInCart();
+      itemsInCart.splice([...cart.children].indexOf(box), 1);
+      setItemsInCart(itemsInCart);
+      box.remove();
+      setTotal();
+    }
+  };
+  return box;
+};
+
+const createName = item => {
   const name = document.createElement("div");
   name.className = "block";
+  name.classList.add("p-4");
   name.innerText = "Product: " + item.name;
+  return name;
+};
+
+const createPrice = item => {
   const price = document.createElement("div");
   price.className = "block";
   price.innerText = "Price: " + item.price;
-  block.append(name, price);
-  cart.append(block);
-  console.log(runningTotal);
-});
+  return price;
+};
 
-const total = document.createElement("div");
-total.className = "block";
-total.innerText = "Total: $" + runningTotal;
-cart.append(total);
+const createDelButton = item => {
+  const delButton = document.createElement("div");
+  delButton.className = "delete";
+  delButton.classList.add("p-3");
+  return delButton;
+};
+
+const renderItemsInCart = () => {
+  cart.innerHTML = null;
+  const itemsInCart = getItemsInCart();
+  for (let item of itemsInCart) {
+    const box = createBox();
+    const name = createName(item);
+    const price = createPrice(item);
+    const delButton = createDelButton();
+    box.append(name, price, delButton);
+    cart.append(box);
+  }
+};
+
+window.onload = () => {
+  renderItemsInCart();
+  setTotal();
+};

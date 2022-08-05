@@ -14,15 +14,15 @@
 
 <!-- # Add to Cart -->
 
-# Remove from Cart
+<!-- # Remove from Cart -->
 
 <!-- # Display Cart Items -->
 
 <!-- # Clear Cart Items -->
 
-# Promo Code in Cart
+<!-- # Promo Code in Cart -->
 
-# style cart
+<!-- # style cart -->
 
 <!-- # Add Home Link in Nav Menu -->
 
@@ -40,10 +40,10 @@
 
 <!-- # Email to Username -->
 
-# Highlight what page your on
+<!-- # Highlight what page your on -->
 
 <!-- # footers -->
 
 <!-- # NAN -->
 
-# Added to cart alert
+<!-- # Added to cart alert -->

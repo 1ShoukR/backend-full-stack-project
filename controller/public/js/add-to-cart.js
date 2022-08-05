@@ -9,5 +9,9 @@ const btns = document.querySelectorAll(".add-to-cart-button");
       price: btn.dataset.price,
     });
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    btn.innerText = "Added";
+    setTimeout(() => {
+      btn.innerText = "Add to Cart";
+    }, 2000);
   };
 });

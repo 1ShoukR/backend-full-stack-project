@@ -179,9 +179,24 @@
       </div>
     </div>
     <div class="container">
-      <div class="box">
-        <div id="cart" class="container"></div>
-        <button id="cart-buy-now-button" class="button is-primary">Buy Now</button>
+      <div class="hero is-large">
+        <div class="hero-body">
+          <di id="cart" class="container"></di>
+          <p id="total" class="title has-text-centered m-6">Loading...</p>
+          <div class="field">
+            <label class="label">Promo Code</label>
+            <div class="control has-icons-left has-icons-right">
+              <input id="cart-promo-code-input" class="input" type="text" placeholder="Promo Code" />
+              <span class="icon is-small is-left">
+                <i class="fa-solid fa-cart-arrow-down"></i>
+              </span>
+            </div>
+            <!-- <p class="help is-danger">This email is invalid</p> -->
+          </div>
+          <button id="cart-buy-now-button" class="button is-primary is-fullwidth">
+            <strong>Buy Now</strong>
+          </button>
+        </div>
       </div>
     </div>
     <footer class="footer mt-6">
