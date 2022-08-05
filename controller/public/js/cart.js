@@ -13,12 +13,13 @@ const setTotal = () => {
   let runningTotal = 0;
   const itemsInCart = getItemsInCart();
   for (let itemInCart of itemsInCart) {
-    const stringPrice = itemInCart.price.replace("$", "");
+    const stringPrice = itemInCart.price.replace("$", "").replace(",", "");
     const floatPrice = +stringPrice;
     runningTotal += floatPrice;
   }
   const total = document.getElementById("total");
   total.innerText = runningTotal > 0 ? "$" + runningTotal.toFixed(2) : "Your Cart is Empty";
+  console.log(runningTotal);
 };
 
 const createBox = () => {
