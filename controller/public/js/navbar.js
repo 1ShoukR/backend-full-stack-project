@@ -21,10 +21,10 @@ $navbarLoginButton.onclick = () => {
   switch ($navbarLoginButton.innerText) {
     case "Login":
       $navbarLoginButton.innerHTML = '<i class="fas fa-xmark"></i>';
-      $navbarLoginButton.classList.add("has-background-danger", "has-text-white");
+      // $navbarLoginButton.classList.add("has-background-danger", "has-text-white");
       break;
     default:
-      $navbarLoginButton.classList.remove("has-background-danger", "has-text-white");
+      // $navbarLoginButton.classList.remove("has-background-danger", "has-text-white");
       $navbarLoginButton.innerHTML = "Login";
   }
 };
