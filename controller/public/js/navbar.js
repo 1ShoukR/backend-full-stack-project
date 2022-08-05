@@ -1,4 +1,4 @@
-window.onload = async () => {
+(async () => {
   const response = await fetch("http://127.0.0.1:3005/basic_homepage/get_current_user");
   const json = await response.json();
   if (response.status === 200) {
@@ -9,7 +9,7 @@ window.onload = async () => {
       $navbarLoginButton.classList.toggle("is-hidden");
     }
   }
-};
+})();
 
 $navbarBurger.onclick = () => {
   $navbarMenuStart.classList.toggle("is-active");

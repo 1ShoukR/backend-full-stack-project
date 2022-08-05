@@ -192,7 +192,9 @@ router.delete("/delete_user", async (req, res) => {
   });
   if (deleteUser) {
     await deleteUser.destroy();
-    res.send("User has been deleted"); //put an alert on the front end when the user has been deleted
+    // res.send("User has been deleted"); //put an alert on the front end when the user has been deleted
+    // res.redirect("http://127.0.0.1:3005/basic_homepage");
+    res.status(200).send();
   } else {
     res.send("this user does not exist"); // put an alert on the front end when the user cannot be found
   }
