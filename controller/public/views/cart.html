@@ -179,24 +179,26 @@
       </div>
     </div>
     <div class="container">
-      <div class="hero">
-        <div class="hero-body">
-          <h1 class="title is-1 has-text-centered p-6">Shopping Cart</h1>
-          <di id="cart" class="container"></di>
-          <p id="total" class="title has-text-centered m-6">Loading...</p>
-          <div class="field">
-            <label class="label">Promo Code</label>
-            <div class="control has-icons-left has-icons-right">
-              <input id="cart-promo-code-input" class="input" type="text" placeholder="Promo Code" />
-              <span class="icon is-small is-left">
-                <i class="fa-solid fa-cart-arrow-down"></i>
-              </span>
+      <div class="box">
+        <div class="hero">
+          <div class="hero-body">
+            <h1 class="title is-1 has-text-centered p-6">Shopping Cart</h1>
+            <di id="cart" class="container"></di>
+            <p id="total" class="title is-fullwidth has-text-left mt-6 mb-6">Loading...</p>
+            <div class="field">
+              <label class="label">Promo Code</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="cart-promo-code-input" class="input" type="text" placeholder="Promo Code" />
+                <span class="icon is-small is-left">
+                  <i class="fa-solid fa-cart-arrow-down"></i>
+                </span>
+              </div>
+              <!-- <p class="help is-danger">This email is invalid</p> -->
             </div>
-            <!-- <p class="help is-danger">This email is invalid</p> -->
+            <button id="cart-buy-now-button" class="button is-primary is-fullwidth">
+              <strong>Buy Now</strong>
+            </button>
           </div>
-          <button id="cart-buy-now-button" class="button is-primary is-fullwidth">
-            <strong>Buy Now</strong>
-          </button>
         </div>
       </div>
     </div>

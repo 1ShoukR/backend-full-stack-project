@@ -23,7 +23,7 @@ const setTotal = () => {
 
 const createBox = () => {
   const box = document.createElement("div");
-  box.className = "box";
+  box.className = "block";
   box.classList.add("is-flex", "is-justify-content-space-between", "is-align-items-center");
   box.onclick = event => {
     if (event.target.classList.contains("delete")) {
