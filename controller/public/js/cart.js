@@ -18,8 +18,7 @@ const setTotal = () => {
     runningTotal += floatPrice;
   }
   const total = document.getElementById("total");
-  total.innerText = runningTotal > 0 ? "$" + runningTotal.toFixed(2) : "Your Cart is Empty";
-  console.log(runningTotal);
+  total.innerText = runningTotal > 0 ? "Total: $" + runningTotal.toFixed(2) : "Your Cart is Empty";
 };
 
 const createBox = () => {
@@ -40,15 +39,16 @@ const createBox = () => {
 
 const createName = item => {
   const name = document.createElement("div");
-  name.className = "block";
-  name.classList.add("p-4");
+  name.className = "tile";
+  name.classList.add("p-4", "has-text-left");
   name.innerText = "Product: " + item.name;
   return name;
 };
 
 const createPrice = item => {
   const price = document.createElement("div");
-  price.className = "block";
+  price.className = "tile";
+  price.classList.add("p-4", "has-text-left");
   price.innerText = "Price: " + item.price;
   return price;
 };
