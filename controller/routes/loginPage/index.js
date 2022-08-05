@@ -55,10 +55,12 @@ router.post("/user_login", async (req, res) => {
   }
 });
 
+// new user page
 router.get("/new_user", async (req, res) => {
   res.render("create-user.html");
 });
 
+// settings page
 router.get("/settings", async (req, res) => {
   res.render("settings.html");
 });
