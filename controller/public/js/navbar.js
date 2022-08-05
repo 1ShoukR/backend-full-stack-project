@@ -7,6 +7,11 @@
       $dropdownUserMenu.classList.toggle("is-hidden");
       $navbarSignUpButton.classList.toggle("is-hidden");
       $navbarLoginButton.classList.toggle("is-hidden");
+      if (json.user.username === "Guest") {
+        $dropdownSettingsButton.classList.add("is-hidden");
+      } else {
+        $dropdownSettingsButton.classList.remove("is-hidden");
+      }
     }
   }
 })();
