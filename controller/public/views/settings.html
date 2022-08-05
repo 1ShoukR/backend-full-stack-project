@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joeva</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    <script defer src="https://kit.fontawesome.com/a7e0ce798b.js" crossorigin="anonymous"></script>
+    <script defer src="../js/variables.js"></script>
+    <script defer src="../js/app.js"></script>
+    <script defer src="../js/navbar.js"></script>
+    <script defer src="../js/login.js"></script>
+    <script defer src="../js/settings.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="block">
+        <p class="container has-text-centered is-size-7">USE PROMO CODE <strong class="has-text-primary">SON-OF-A</strong> FOR 0% OFF</p>
+      </div>
+    </div>
+    <div style="position: sticky; top: 0; z-index: 100" class="box">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a href="http://127.0.0.1:3005/basic_homepage" class="navbar-item" href="#">
+              <img src="../assets/svg/joeva.svg" alt="Joeva" width="128" />
+            </a>
+            <a role="button" id="navbar-burger" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <div id="navbar-menu-start" class="navbar-menu is-shadowless">
+            <div class="navbar-start">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a href="http://127.0.0.1:3005/login_page/new_user" id="navbar-sign-up-button" class="button has-text-primary">
+                    <strong>Sign Up</strong>
+                  </a>
+                  <button id="navbar-login-button" class="button is-light">Login</button>
+                  <div id="dropdown-user-menu" class="dropdown is-hoverable is-hidden">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+                        <span class="icon is-small">
+                          <i class="fas fa-user" aria-hidden="true"></i>
+                        </span>
+                        <span id="dropdown-username">Username</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                      <div class="dropdown-content">
+                        <div id="dropdown-settings-button" class="dropdown-item">
+                          <a href="http://127.0.0.1:3005/login_page/settings" class="has-text-primary">
+                            <span class="icon-text">
+                              <span class="icon">
+                                <i class="fa-solid fa-cog"></i>
+                              </span>
+                              <span>Settings</span>
+                            </span>
+                          </a>
+                        </div>
+                        <div class="dropdown-item">
+                          <a href="/login_page/logout" class="has-text-dark">
+                            <span class="icon-text">
+                              <span class="icon">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                              </span>
+                              <span>Logout</span>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button id="navbar-logout-button" class="button is-light is-hidden">Logout</button>
+                  <button id="navbar-settings-button" class="button is-light is-hidden">
+                    <a href="/" class="has-text-dark is-clickable">
+                      <span class="icon">
+                        <i class="fas fa-cog"></i>
+                      </span>
+                    </a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="navbar-menu-end" class="navbar-menu is-shadowless">
+            <div class="navbar-end is-flex-direction-row">
+              <a href="/basic_homepage" class="navbar-item has-text-dark is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fas fa-home"></i>
+                  </span>
+                  <span>Home</span>
+                </span>
+              </a>
+              <a href="/baby_products/all_your_baby_needs" class="navbar-item has-text-dark is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fa-solid fa-baby-carriage"></i>
+                  </span>
+                  <span>Baby</span>
+                </span>
+              </a>
+              <a href="/pc_parts/insane_pc_stuff" class="navbar-item has-text-dark is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fa-solid fa-computer-mouse"></i>
+                  </span>
+                  <span>Electronics</span>
+                </span>
+              </a>
+              <a href="/boujieeclothes/expensiveclothes" class="navbar-item has-text-dark is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fa-solid fa-shirt"></i>
+                  </span>
+                  <span>Fashion</span>
+                </span>
+              </a>
+              <a href="/free_junk/get_your_free_stuff_here" class="navbar-item has-text-dark is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fa-solid fa-sack-dollar"></i>
+                  </span>
+                  <span>Free</span>
+                </span>
+              </a>
+              <a href="/add_to_cart/cart" class="navbar-item has-text-dark is-clickable">
+                <span class="icon-text">
+                  <span class="icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                  </span>
+                  <span>Cart</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="login-form" class="container is-hidden">
+        <div class="field">
+          <p class="control has-icons-left has-icons-right">
+            <input id="login-form-username-input" class="input" type="text" placeholder="Username" />
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right is-hidden">
+              <i class="fas fa-check"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control has-icons-left">
+            <input id="login-form-password-input" class="input" type="password" placeholder="Password" />
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <button id="login-form-login-button" class="button is-fullwidth is-primary">
+              <strong>Login</strong>
+            </button>
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <button id="login-form-guest-button" class="button is-fullwidth is-light">Continue as Guest</button>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="box">
+        <div class="title">Settings</div>
+        <div class="container">
+          <fieldset disabled>
+            <div class="field">
+              <label class="label">First</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="create-user-first-input" class="input" type="text" placeholder="First" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-pen"></i>
+                </span>
+              </div>
+              <!-- <p class="help is-danger">This email is invalid</p> -->
+            </div>
+          </fieldset>
+          <fieldset disabled>
+            <div class="field">
+              <label class="label">Last</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="create-user-last-input" class="input" type="text" placeholder="Last" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-pen"></i>
+                </span>
+              </div>
+              <!-- <p class="help is-danger">This email is invalid</p> -->
+            </div>
+          </fieldset>
+          <fieldset disabled>
+            <div class="field">
+              <label class="label">Username</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="create-user-username-input" class="input" type="text" placeholder="Username" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+              <!-- <p class="help is-success">This username is available</p> -->
+            </div>
+          </fieldset>
+          <fieldset disabled>
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="create-user-email-input" class="input" type="email" placeholder="Email" />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </div>
+              <!-- <p class="help is-danger">This email is invalid</p> -->
+            </div>
+          </fieldset>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control has-icons-left has-icons-right">
+              <input id="create-user-password-input" class="input" type="password" placeholder="Password" />
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </div>
+            <!-- <p class="help is-danger">This email is invalid</p> -->
+          </div>
+          <div class="field">
+            <div class="control">
+              <button id="update-user-submit-button" class="button is-fullwidth is-primary">
+                <strong>Update</strong>
+              </button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <a href="http://127.0.0.1:3005/basic_homepage" class="has-text-dark">
+                <button class="button is-fullwidth is-light">Back</button>
+              </a>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button id="delete-user-button" class="button is-fullwidth is-inverted is-danger has-background-white">Delete Account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer mt-6">
+      <div class="content has-text-centered">
+        <p><strong>Joeva Inc</strong></p>
+        <p>Copyright © 2022 Joeva Inc. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
