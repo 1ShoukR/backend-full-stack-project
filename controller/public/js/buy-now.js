@@ -56,6 +56,7 @@ cartBuyNowButton.onclick = async () => {
     localStorage.removeItem("cartItems");
     cart.innerHTML = null;
     alert("Thank you for shopping at Joeva!");
+    setTotal();
   }
   console.log(response);
 };
