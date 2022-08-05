@@ -13,9 +13,7 @@ const checkLogin = (req, res, next) => {
 
 // gets all free stuff from database
 router.get("/get_your_free_stuff_here", checkLogin, async (req, res) => {
-  console.log(req.session.user);
   const freeJunkToGet = await freeJunks.findAll();
-  console.log(freeJunkToGet);
   res.render("free.html", {
     locals: {
       freeJunks: freeJunkToGet,

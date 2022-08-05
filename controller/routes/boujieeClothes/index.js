@@ -13,9 +13,7 @@ const checkLogin = (req, res, next) => {
 
 // gets all expenisve clothes to get
 router.get("/expensiveclothes", checkLogin, async (req, res) => {
-  console.log(req.session);
   const expensiveClothesToGet = await boujieeClothes.findAll();
-  console.log(expensiveClothesToGet);
   if (expensiveClothesToGet) {
     res.status(200);
     res.render("fashion.html", {

@@ -21,16 +21,6 @@ cartBuyNowButton.onclick = async () => {
         break;
     }
   }
-  console.log({
-    babyProductId: babyProductId,
-    computerProductId: computerProductId,
-    boujieeClothesId: boujieeClothesId,
-    freeJunkId: freeJunkId,
-    orderSummary: "Summary",
-    carrierService: "UPS",
-    trackingNumber: "iou23541jre4234",
-    deliveryDate: "Today",
-  });
   const response = await fetch("http://127.0.0.1:3005/add_to_cart/add_order", {
     method: "POST",
     cors: "cors",
@@ -58,5 +48,4 @@ cartBuyNowButton.onclick = async () => {
     alert("Thank you for shopping at Joeva!");
     setTotal();
   }
-  console.log(response);
 };

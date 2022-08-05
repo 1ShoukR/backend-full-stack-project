@@ -15,7 +15,6 @@ $loginFormLoginButton.onclick = async () => {
     }),
   });
   const json = await response.json();
-  console.log(json);
   if (response.status === 200) {
     $dropdownUsername.innerText = json.firstName + " " + json.lastName;
     $dropdownUserMenu.classList.toggle("is-hidden");
@@ -45,7 +44,6 @@ $loginFormGuestButton.onclick = async () => {
     }),
   });
   const json = await response.json();
-  console.log(response.status);
   if (response.status === 200) {
     $dropdownUsername.innerText = json.firstName + " " + json.lastName;
     $dropdownUserMenu.classList.toggle("is-hidden");

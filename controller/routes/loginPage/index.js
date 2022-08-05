@@ -16,18 +16,14 @@ const checkLogin = (req, res, next) => {
 
 //logout
 router.get("/logout", (req, res) => {
-  console.log(req.session);
   req.session.user = null;
-  console.log(req.session.user);
   // res.render("loginPage.html");
   res.redirect("http://127.0.0.1:3005/basic_homepage");
 });
 
 // user login
 router.post("/user_login", async (req, res) => {
-  console.log(req.session);
   const { username, password } = req.body;
-  console.log(username, password);
   if (!username || !password) {
     res.send(400).send("Please provide a username and password");
   }
@@ -38,16 +34,12 @@ router.post("/user_login", async (req, res) => {
       },
     });
     const userWeFound = getUser.dataValues;
-    console.log(getUser);
     const validatePassword = await bcrypt.compare(password, userWeFound.password);
-    console.log(userWeFound.password);
-    console.log(validatePassword);
     if (!validatePassword) {
       res.status(400).send("That user does not exist"); // make them redirect to login page again
     } else {
       // make them redirected to homepage
       req.session.user = userWeFound;
-      console.log(req.session);
       // res.redirect("/basic_homepage");
       res.send(
         JSON.stringify({
@@ -75,7 +67,6 @@ router.get("/settings", async (req, res) => {
 router.post("/create_user", async (req, res) => {
   //after creating an account, redirect them to homepage;
   const { username, firstName, lastName, email, password } = req.body;
-  console.log({ username, firstName, lastName, email, password });
   // check first if the above values are null, send alert
   try {
     if (!username) {
@@ -123,7 +114,6 @@ router.post("/create_user", async (req, res) => {
 // guest login
 router.post("/guestlogin", async (req, res) => {
   //after clicking "log in as a guest user" link, redirect them to the homepage html file
-  console.log(req.session);
   const guestUser = await user.findOne({
     where: {
       username: "Guest",
@@ -135,7 +125,6 @@ router.post("/guestlogin", async (req, res) => {
   });
   if (guestUser) {
     req.session.user = guestUser;
-    console.log(req.session.user);
     // res.redirect("/basic_homepage");
     res.status(200);
     res.send(JSON.stringify(guestUser));
@@ -149,7 +138,6 @@ router.post("/guestlogin", async (req, res) => {
 // update password
 router.put("/update_password", async (req, res) => {
   const { username, password } = req.body;
-  console.log(username, password);
   try {
     const findUser = await user.findOne({
       where: {
@@ -167,12 +155,10 @@ router.put("/update_password", async (req, res) => {
       });
       res.render("create-user.html"); // give alert that password has been updated
     } catch (error) {
-      console.log(error);
       res.status(400); // give an alert that says password did not get submitted
       res.render("create-user.html");
     }
   } catch (error) {
-    console.log(error);
     res.status(400).send(error);
   }
 });

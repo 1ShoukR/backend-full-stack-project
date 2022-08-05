@@ -13,9 +13,7 @@ const checkLogin = (req, res, next) => {
 
 // gets all the pc stuff from database
 router.get("/insane_pc_stuff", checkLogin, async (req, res) => {
-  console.log(req.session);
   const pcPartsToGet = await computerProducts.findAll();
-  console.log(pcPartsToGet);
   res.render("electronics.html", {
     locals: {
       pcParts: pcPartsToGet,

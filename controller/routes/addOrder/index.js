@@ -20,7 +20,6 @@ router.post("/add_order", checkLogin, async (req, res) => {
   // make an alert on frontend that says "your order has been complete"
   try {
     const { userId, babyProductId, computerProductId, boujieeClothesId, freeJunkId, orderSummary, carrierService, trackingNumber, deliveryDate } = req.body;
-    console.log(userId, babyProductId, computerProductId, boujieeClothesId, freeJunkId, orderSummary, carrierService, trackingNumber, deliveryDate);
     const newOrder = {
       userId: req.session.user.id,
       babyProductId: babyProductId,
@@ -34,9 +33,7 @@ router.post("/add_order", checkLogin, async (req, res) => {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    console.log(newOrder);
     const addOrderToTable = await Order.create(newOrder);
-    console.log(addOrderToTable);
     res.status(200);
     res.redirect("/basic_homepage");
   } catch (error) {
