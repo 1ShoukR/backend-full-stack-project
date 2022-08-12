@@ -1,10 +1,9 @@
 module.exports = {
-    s3: {
-    key: process.env.DB_USERNAME,
-    secret: process.env.AWS_SECRET_ACCESS_KEY,
-    bucket: process.env.S3_MLL_BUCKET_NAME,
-    destination: '/backups/database',
-    encrypt: false,
-    region: process.env.AWS_REGION,
+    DB: {
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    DB_HOST: process.env.DB_HOST,
+    DB_DIALECT: process.env.DB_DIALECT
     },
 };
